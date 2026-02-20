@@ -1,15 +1,16 @@
 import { forwardRef } from 'react';
-import type { ButtonHTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes, AnchorHTMLAttributes, ElementType } from 'react';
 import { motion } from 'motion/react';
 import { Loader2 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export type ButtonProps = (ButtonHTMLAttributes<HTMLButtonElement> | AnchorHTMLAttributes<HTMLAnchorElement>) & {
     variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
     size?: 'sm' | 'md' | 'lg' | 'icon';
     isLoading?: boolean;
     animate?: boolean;
-}
+    as?: ElementType;
+};
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     (
@@ -19,8 +20,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             size = 'md',
             isLoading = false,
             animate = true,
+            as = 'button',
             children,
-            disabled,
             ...props
         },
         ref
@@ -53,16 +54,19 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             className
         );
 
-        const MotionComponent = animate ? motion.create('button') : 'button';
+        const MotionComponent = animate ? motion.create(as as any) : (as as any);
         const animationProps = {};
+
+        // Explicitly extract disabled if it exists in props to avoid TS errors when used as an 'a' tag
+        const isDisabled = (props as any).disabled || isLoading;
 
         return (
             <MotionComponent
-                ref={ref as any}
+                ref={ref}
                 className={combinedClassName}
-                disabled={disabled || isLoading}
+                disabled={isDisabled}
                 {...animationProps}
-                {...(props as any)}
+                {...props}
             >
                 {isLoading && <Loader2 className="mr-2 h-5 w-5 animate-spin" />}
                 <span className={cn('flex items-center', isLoading && 'opacity-0')}>
