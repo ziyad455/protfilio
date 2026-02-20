@@ -26,17 +26,17 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref
     ) => {
         const baseStyles =
-            'inline-flex items-center justify-center rounded-xl font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 overflow-hidden relative cursor-pointer';
+            'inline-flex items-center justify-center rounded-xl font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 overflow-hidden relative cursor-pointer transition-all duration-300 ease-in-out hover:-translate-y-[2px] active:translate-y-[0px] active:scale-[0.98]';
 
         const variants = {
             primary:
-                'bg-[var(--color-btn-primary)] text-white hover:bg-[var(--color-btn-primary-hover)] dark:bg-[var(--color-btn-primary-dark)] dark:hover:bg-[var(--color-btn-primary-dark-hover)] shadow-md',
+                'bg-[var(--color-btn-primary)] text-white hover:bg-[var(--color-btn-primary-hover)] dark:bg-[var(--color-btn-primary-dark)] dark:hover:bg-[var(--color-btn-primary-dark-hover)] shadow-[0px_2px_3px_0_rgba(0,0,0,0.1)] hover:shadow-[0px_6px_9px_0_rgba(61,99,171,0.15)] dark:hover:shadow-[0px_6px_9px_0_rgba(0,0,0,0.2)]',
             secondary:
-                'bg-[var(--color-primary-bg-light)] text-[var(--color-primary)] hover:bg-[var(--color-primary-bg)] dark:text-[var(--color-primary-lighter)]',
+                'bg-[var(--color-primary-bg-light)] text-[var(--color-primary)] hover:bg-[var(--color-primary-bg)] dark:text-[var(--color-primary-lighter)] hover:shadow-md',
             outline:
-                'border-2 border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-white dark:border-[var(--color-primary-dark)] dark:text-[var(--color-primary-lighter)] dark:hover:bg-[var(--color-primary-dark)] dark:hover:text-white',
+                'border-2 border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-white dark:border-[var(--color-primary-dark)] dark:text-[var(--color-primary-lighter)] dark:hover:bg-[var(--color-primary-dark)] dark:hover:text-white hover:shadow-md',
             ghost:
-                'hover:bg-[var(--color-neutral-100)] dark:hover:bg-[var(--color-neutral-800)] text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)]',
+                'hover:bg-[var(--color-neutral-100)] dark:hover:bg-[var(--color-neutral-800)] text-[var(--color-text-secondary)] dark:text-[var(--color-text-secondary-dark)] hover:-translate-y-0', // Override translate for ghost button
         };
 
         const sizes = {
@@ -54,13 +54,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         );
 
         const MotionComponent = animate ? motion.create('button') : 'button';
-        const animationProps = animate
-            ? {
-                whileHover: { scale: disabled || isLoading ? 1 : 1.02 },
-                whileTap: { scale: disabled || isLoading ? 1 : 0.98 },
-                transition: { duration: 0.2, ease: 'easeOut' }
-            }
-            : {};
+        const animationProps = {};
 
         return (
             <MotionComponent
