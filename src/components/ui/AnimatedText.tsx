@@ -50,7 +50,7 @@ export const AnimatedText = ({
     };
 
     return (
-        <motion.div
+        <motion.span
             ref={ref}
             variants={containerVariants}
             initial="hidden"
@@ -66,6 +66,6 @@ export const AnimatedText = ({
                     {word}
                 </motion.span>
             ))}
-        </motion.div>
+        </motion.span>
     );
 };

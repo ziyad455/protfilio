@@ -25,8 +25,11 @@ export const AboutSection = () => {
         const loadData = async () => {
             try {
                 const response = await fetchAPI('/api/about?populate=*');
-                if (response.data && response.data.attributes) {
-                    setData(response.data.attributes);
+                console.log('API About Raw Response:', response);
+                if (response.data) {
+                    const aboutData = response.data.attributes || response.data;
+                    console.log('Setting About Data:', aboutData);
+                    setData(aboutData);
                 }
             } catch (err) {
                 console.error('Failed to fetch About data:', err);

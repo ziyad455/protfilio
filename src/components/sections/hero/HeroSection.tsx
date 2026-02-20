@@ -13,7 +13,7 @@ interface HeroData {
     description: string;
     resumeLink: string;
     roles: { data: { id: number; attributes: { name: string } }[] };
-    profileImage: { data: { attributes: { url: string } } | null };
+    profileImage: any; // Using any temporarily to avoid strict type collisions with both nested and flat responses
 }
 
 export const HeroSection = () => {
@@ -25,8 +25,12 @@ export const HeroSection = () => {
             try {
                 // Populate roles and profileImage relations
                 const response = await fetchAPI('/api/hero?populate=*');
-                if (response.data && response.data.attributes) {
-                    setData(response.data.attributes);
+                console.log('API Hero Raw Response:', response);
+                if (response.data) {
+                    // Strapi v4 sometimes returns data.attributes, sometimes just data directly depending on config
+                    const heroData = response.data.attributes || response.data;
+                    console.log('Setting Hero Data:', heroData);
+                    setData(heroData);
                 }
             } catch (err) {
                 console.error('Failed to fetch Hero data:', err);
@@ -48,9 +52,17 @@ export const HeroSection = () => {
         profileImage: { data: null }
     };
 
-    const imageUrl = displayData.profileImage?.data?.attributes?.url
-        ? `${import.meta.env.VITE_STRAPI_API_URL}${displayData.profileImage.data.attributes.url}`
-        : '/assets/home/gradientshub.jpg'; // Fallback to public asset if none uploaded
+    // Handle both local relative URLs and Strapi Cloud absolute URLs
+    const getImageUrl = (url?: string) => {
+        if (!url) return '/assets/home/gradientshub.jpg';
+        return url.startsWith('http') ? url : `${import.meta.env.VITE_STRAPI_API_URL}${url}`;
+    };
+
+    console.log('Hero Profile Image Data:', displayData.profileImage);
+
+    // Check for both the classic v4 nested structure and the flat structure we're seeing in the logs
+    const rawImageUrl = displayData.profileImage?.url || displayData.profileImage?.data?.attributes?.url;
+    const imageUrl = getImageUrl(rawImageUrl);
 
     if (loading) {
         return (
