@@ -5,6 +5,7 @@ import { Typography } from './components/ui/Typography';
 import { Button } from './components/ui/Button';
 import { Card, CardHeader, CardContent, CardFooter } from './components/ui/Card';
 import { ArrowRight, Github, Send } from 'lucide-react';
+import { TopBg } from './components/ui/TopBg';
 
 function App() {
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
@@ -35,7 +36,8 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] transition-colors duration-300">
+    <div className="relative min-h-screen bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] transition-colors duration-300">
+      <TopBg />
 
       {/* Hero Showcase Section */}
       <SectionProvider paddingY="xl">
