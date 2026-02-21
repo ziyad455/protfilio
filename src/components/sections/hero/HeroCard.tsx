@@ -15,7 +15,6 @@ export const HeroCard = ({
     className,
 }: HeroCardProps) => {
     const caseRef = useRef<HTMLDivElement>(null);
-    const colorPickerRef = useRef<SVGSVGElement>(null);
     const colorRef = useRef<SVGSVGElement>(null);
     const indicatorRef = useRef<HTMLDivElement>(null);
 
@@ -33,7 +32,6 @@ export const HeroCard = ({
         let rafId = 0;
 
         const webCaseStrength = 25;
-        const colorPickerStrength = 40;
         const colorStrength = 50;
         const cursorEasing = 0.12;
         const parallaxEasing = 0.08;
@@ -88,13 +86,6 @@ export const HeroCard = ({
                 const currentX = currentMatrix.m41 || 0;
                 const currentY = currentMatrix.m42 || 0;
                 caseRef.current.style.transform = `translate3d(${currentX + (targetWebCaseX - currentX) * parallaxEasing}px, ${currentY + (targetWebCaseY - currentY) * parallaxEasing}px, 0)`;
-            }
-
-            if (colorPickerRef.current) {
-                const targetX = mouseX * colorPickerStrength;
-                const targetY = mouseY * colorPickerStrength;
-                const currentMatrix = new DOMMatrix(getComputedStyle(colorPickerRef.current).transform);
-                colorPickerRef.current.style.transform = `translate3d(${currentMatrix.m41 + (targetX - currentMatrix.m41) * parallaxEasing}px, ${currentMatrix.m42 + (targetY - currentMatrix.m42) * parallaxEasing}px, 0)`;
             }
 
             if (colorRef.current) {
@@ -163,24 +154,6 @@ export const HeroCard = ({
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div>
-                <svg ref={colorPickerRef} width="200" height="43" viewBox="0 0 200 43" fill="none" xmlns="http://www.w3.org/2000/svg"
-                    className="pointer-events-none absolute md:left-[-40px] left-[-20px] top-[45%] rounded-[10px] bg-white overflow-hidden z-30 md:max-w-[35%] max-w-[40%] transition-transform duration-300 ease-out will-change-transform shadow-[var(--shadow-lg)]">
-                    <rect width="200" height="43" rx="10" fill="white" />
-                    <mask id="mask0_458_539" maskUnits="userSpaceOnUse" x="42" y="15" width="112" height="16">
-                        <path d="M44.6 27.1H42.3V16.3H50.1V18.2H44.6V20.6H49.6V22.6H44.6V27.1ZM54.5 27.2C53.4 27.2 52.5 26.9 51.9 26.3C51.4 25.8 51.1 25 51.1 23.9V19.1H53.3V23.5C53.3 24.7 53.9 25.2 55.1 25.2C55.7 25.2 56.1 25.1 56.5 24.8C56.8 24.5 57 24 57 23.4V19.1H59.2V24.9H60.3V27.1H58V25.8H57.5C57.2 26.2 56.8 26.6 56.3 26.8C55.8 27.1 55.2 27.2 54.5 27.2ZM61.7 27.1V21.3H60.6V19.1H62.9V20.4H63.4C63.8 19.9 64.1 19.6 64.6 19.3C65.1 19.1 65.7 18.9 66.4 18.9C67.5 18.9 68.3 19.2 69 19.8C69.6 20.5 69.9 21.3 69.9 22.3V27.1H67.7V22.7C67.7 21.5 67 20.9 65.8 20.9C64.6 20.9 64 21.5 64 22.7V27.1H61.7Z" fill="#161A1F" />
-                    </mask>
-                    <g mask="url(#mask0_458_539)">
-                        <rect width="159" height="43" transform="translate(41)" fill="#514AA3" />
-                    </g>
-                    <g opacity="0.4">
-                        <path d="M18.1 14H10.8C10.2 14 9.7 14.2 9.3 14.6C8.9 15 8.7 15.5 8.7 16V17.6C8.7 17.9 8.8 18.1 9 18.3C9.2 18.5 9.5 18.6 9.8 18.6C10 18.6 10.3 18.5 10.5 18.3C10.7 18.1 10.8 17.9 10.8 17.6V16.3H13.1V26.2H11.3V28.5H17.6V26.4H15.7V17.6H18.1V14Z" fill="#929DAB" />
-                        <path d="M31.1 14H23.8C23.2 14 22.7 14.2 22.3 14.6C21.9 15 21.7 15.5 21.7 16V17.6H24V26.4H22.3V28.5H30.5V26.4H28.7V16.1H31.1V14Z" fill="#929DAB" />
-                        <rect width="28" height="25" transform="translate(9 9)" fill="#001A56" />
-                    </g>
-                </svg>
             </div>
 
             <div>
