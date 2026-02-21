@@ -5,6 +5,7 @@ import { Button } from '../../ui/Button';
 import { BlogCard } from '../../cards/BlogCard';
 import { fetchAPI } from '../../../services/api';
 import { AnimatedText } from '../../ui/AnimatedText';
+import { Link } from 'react-router-dom';
 
 interface ArticleAttributes {
     title: string;
@@ -155,7 +156,7 @@ export const BlogSection = ({
             {/* View All Articles Button */}
             {showViewAllButton && (
                 <div className="flex justify-center mt-4 mb-12">
-                    <Button as="a" href="/blog" variant="outline" className="w-[80%] lg:w-[40%] font-semibold">
+                    <Button as={Link} to="/blog" variant="outline" className="w-[80%] lg:w-[40%] font-semibold">
                         View All Articles
                     </Button>
                 </div>

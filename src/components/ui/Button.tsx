@@ -10,6 +10,7 @@ export type ButtonProps = (ButtonHTMLAttributes<HTMLButtonElement> | AnchorHTMLA
     isLoading?: boolean;
     animate?: boolean;
     as?: ElementType;
+    to?: string;
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(

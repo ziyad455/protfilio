@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { cn } from '../../lib/utils';
 
 export interface BlogCardProps {
@@ -91,9 +92,9 @@ export const BlogCard = ({
                 </div>
 
                 {/* Article link */}
-                <a className="absolute inset-0 z-10" href={postLink}>
+                <Link className="absolute inset-0 z-10" to={postLink}>
                     <span className="sr-only">Read More About {title}</span>
-                </a>
+                </Link>
             </div>
 
             {/* Content area */}
@@ -124,14 +125,14 @@ export const BlogCard = ({
                 </div>
 
                 {/* Title */}
-                <a href={postLink} className="relative z-20 block">
+                <Link to={postLink} className="relative z-20 block">
                     <h2 className={cn(
                         "font-brand text-neutral-900 dark:text-white mb-3 leading-tight transition-colors duration-300 group-hover:text-primary dark:group-hover:text-primary-light line-clamp-2",
                         isHorizontal ? "text-3xl" : "text-2xl"
                     )}>
                         {title}
                     </h2>
-                </a>
+                </Link>
 
                 {/* Description */}
                 {description && (
@@ -142,8 +143,8 @@ export const BlogCard = ({
 
                 {/* Read More button */}
                 <div className="mt-auto pt-4">
-                    <a
-                        href={postLink}
+                    <Link
+                        to={postLink}
                         className="inline-flex items-center gap-2 text-sm font-semibold text-primary dark:text-primary-light transition-all duration-300 group/link relative z-20"
                     >
                         <span className="relative">
@@ -165,7 +166,7 @@ export const BlogCard = ({
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                             <polyline points="12 5 19 12 12 19"></polyline>
                         </svg>
-                    </a>
+                    </Link>
                 </div>
             </div>
         </article>

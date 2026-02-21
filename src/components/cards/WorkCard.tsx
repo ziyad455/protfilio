@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { cn } from '../../lib/utils';
 
 export interface WorkCardProps {
@@ -249,14 +250,23 @@ export const WorkCard = ({
             </div>
 
             {/* Link overlay for entire card */}
-            <a
-                href={url}
-                target={target}
-                rel={target === "_blank" ? "noopener noreferrer" : undefined}
-                className="absolute inset-0 z-10"
-            >
-                <span className="sr-only">View {name}</span>
-            </a>
+            {url.startsWith('http') ? (
+                <a
+                    href={url}
+                    target={target}
+                    rel={target === "_blank" ? "noopener noreferrer" : undefined}
+                    className="absolute inset-0 z-10"
+                >
+                    <span className="sr-only">View {name}</span>
+                </a>
+            ) : (
+                <Link
+                    to={url}
+                    className="absolute inset-0 z-10"
+                >
+                    <span className="sr-only">View {name}</span>
+                </Link>
+            )}
         </article>
     );
 };

@@ -5,6 +5,7 @@ import { Button } from '../../ui/Button';
 import { WorkCard } from '../../cards/WorkCard';
 import { fetchAPI } from '../../../services/api';
 import { AnimatedText } from '../../ui/AnimatedText';
+import { Link } from 'react-router-dom';
 
 interface ProjectAttributes {
     title: string;
@@ -221,7 +222,7 @@ export const FeaturedWorkSection = ({
                 {/* View All Button */}
                 {shouldShowViewAll && (
                     <div className="flex items-center justify-center pt-4">
-                        <Button as="a" href="/works" variant="outline" className="w-[80%] lg:w-[40%] mt-8 font-semibold">
+                        <Button as={Link} to="/works" variant="outline" className="w-[80%] lg:w-[40%] mt-8 font-semibold">
                             See All Works
                         </Button>
                     </div>
