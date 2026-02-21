@@ -74,13 +74,15 @@ interface FeaturedWorkSectionProps {
     description?: string;
     limit?: number;
     showAll?: boolean;
+    showViewAllButton?: boolean;
 }
 
 export const FeaturedWorkSection = ({
     title = "Featured Work ↓",
     description = "I create innovative and purposeful designs that not only capture attention but also drive meaningful results.",
     limit,
-    showAll = false
+    showAll = false,
+    showViewAllButton = true
 }: FeaturedWorkSectionProps) => {
     const [projects, setProjects] = useState<any[]>(defaultProjects);
     const [loading, setLoading] = useState(true);
@@ -150,10 +152,6 @@ export const FeaturedWorkSection = ({
     // Rest are grid (2 col)
     const gridProjects = displayProjects.slice(3);
 
-    const shouldShowViewAll = limit !== undefined
-        ? limit < projects.length
-        : !showAll && projects.length > 6;
-
     if (loading) {
         return (
             <SectionProvider className="py-16 md:py-16 md:pb-12 min-h-[50vh] flex items-center justify-center border-t border-dashed border-gray-200 dark:border-neutral-800">
@@ -220,7 +218,7 @@ export const FeaturedWorkSection = ({
                 )}
 
                 {/* View All Button */}
-                {shouldShowViewAll && (
+                {showViewAllButton && (
                     <div className="flex items-center justify-center pt-4">
                         <Button as={Link} to="/works" variant="outline" className="w-[80%] lg:w-[40%] mt-8 font-semibold">
                             See All Works
