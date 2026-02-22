@@ -90,20 +90,20 @@ export const Footer = () => {
                     </p>
 
                     {/* Social Links */}
-                    <span className="inline-flex justify-center mt-4 space-x-5 sm:ml-auto sm:mt-0 sm:justify-start overflow-hidden">
+                    <span className="inline-flex justify-center mt-4 space-x-5 sm:ml-auto sm:mt-0 sm:justify-start">
                         {socials.map((social) => (
                             <a
                                 key={social.id}
                                 href={social.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
+                                target={social.url.startsWith('mailto:') ? undefined : '_blank'}
+                                rel={social.url.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
                                 className="text-neutral-500 dark:text-neutral-300 hover:text-primary dark:hover:text-primary-light transition-colors duration-300"
                                 title={social.name}
                             >
                                 <span className="sr-only">{social.name}</span>
                                 {social.icon ? (
                                     <div
-                                        className="w-5 h-5 [&>svg]:w-5 [&>svg]:h-5 [&>svg]:fill-current"
+                                        className="w-5 h-5 [&>svg]:w-5 [&>svg]:h-5 [&>svg]:fill-current [&>svg]:stroke-current"
                                         dangerouslySetInnerHTML={{ __html: social.icon }}
                                     />
                                 ) : (
