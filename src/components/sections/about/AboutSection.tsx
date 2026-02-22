@@ -5,16 +5,14 @@ import { fetchAPI } from '../../../services/api';
 
 interface SkillData {
     id: number;
-    attributes: {
-        name: string;
-    };
+    name: string;
 }
 
 interface AboutData {
     title: string;
     content: string;
-    skills: { data: SkillData[] };
-    toolsImage: { data: { attributes: { url: string } } | null };
+    skills: SkillData[];
+    toolsImage: { data: { attributes: { url: string } } | null } | { url: string } | null;
 }
 
 export const AboutSection = () => {
@@ -44,14 +42,12 @@ export const AboutSection = () => {
     const displayData = data || {
         title: "About Me",
         content: "Great design isn't just a pretty interface—it helps people reach their goals naturally, fuels sustainable growth, and keeps systems solid as you scale. I connect design and development, bringing strategy, usability, and execution together to turn visuals into real, measurable results.",
-        skills: {
-            data: [
-                { id: 1, attributes: { name: 'Product Design' } },
-                { id: 2, attributes: { name: 'Website Design' } },
-                { id: 3, attributes: { name: 'React Development' } }
-            ]
-        },
-        toolsImage: { data: null }
+        skills: [
+            { id: 1, name: 'Product Design' },
+            { id: 2, name: 'Website Design' },
+            { id: 3, name: 'React Development' }
+        ],
+        toolsImage: null
     };
 
     if (loading) {
@@ -101,7 +97,7 @@ export const AboutSection = () => {
                         </Typography>
 
                         <div className="flex flex-wrap gap-3">
-                            {displayData.skills?.data?.map((skill, index) => (
+                            {displayData.skills?.map((skill, index) => (
                                 <div
                                     key={skill.id}
                                     className="px-4 py-2 rounded-xl bg-gradient-to-b from-[#f7f8f0] to-[#f1f2f9] dark:from-gray-900 dark:to-gray-800 border border-gray-200/50 dark:border-gray-700/50 text-neutral-700 dark:text-neutral-200 font-medium text-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
@@ -109,7 +105,7 @@ export const AboutSection = () => {
                                     data-aos-delay={200 + (index * 50)}
                                     data-aos-once="true"
                                 >
-                                    {skill.attributes.name}
+                                    {skill.name}
                                 </div>
                             ))}
                         </div>
