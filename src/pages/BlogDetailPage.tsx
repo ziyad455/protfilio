@@ -138,12 +138,11 @@ export const BlogDetailPage = () => {
 
                     {/* Article content */}
                     <div
-                        className="prose prose-lg dark:prose-invert max-w-none text-neutral-700 dark:text-neutral-300 leading-relaxed whitespace-pre-line"
+                        className="article-content prose prose-lg dark:prose-invert max-w-none text-neutral-700 dark:text-neutral-300 leading-relaxed"
                         data-aos="fade-up-sm"
                         data-aos-delay="200"
-                    >
-                        {article.content}
-                    </div>
+                        dangerouslySetInnerHTML={{ __html: article.content }}
+                    />
                 </article>
             </SectionProvider>
         </div>

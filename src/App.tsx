@@ -16,7 +16,7 @@ function App() {
         <div className="relative min-h-screen bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] transition-colors duration-300 overflow-x-hidden">
           {/* Subtle grid background overlay */}
           <div
-            className="fixed inset-0 z-0 pointer-events-none opacity-[0.03] dark:opacity-[0.02]"
+            className="fixed inset-0 z-0 pointer-events-none opacity-[0.07] dark:opacity-[0.04]"
             style={{
               backgroundImage: 'url(/grid-bg.jpg)',
               backgroundSize: '400px',
