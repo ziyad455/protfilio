@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 
 interface ProjectAttributes {
     title: string;
+    slug: string;
     tagline: string;
     liveUrl?: string;
     githubUrl?: string;
@@ -119,10 +120,12 @@ export const FeaturedWorkSection = ({
                         return {
                             name: attrs.title || 'Untitled Project',
                             description: attrs.tagline || '',
-                            url: attrs.liveUrl || attrs.githubUrl || '#',
+                            url: `/works/${attrs.slug || item.id}`,
                             image: getImageUrl(rawImageUrl, '/assets/works/01.jpg'),
                             tags: tagsList,
-                            isShow: true
+                            isShow: true,
+                            githubUrl: attrs.githubUrl || null,
+                            liveUrl: attrs.liveUrl || null
                         };
                     });
 
@@ -191,6 +194,8 @@ export const FeaturedWorkSection = ({
                                     video={project.video}
                                     layout="featured"
                                     index={index}
+                                    githubUrl={project.githubUrl}
+                                    liveUrl={project.liveUrl}
                                 />
                             ))}
                     </div>
@@ -211,7 +216,9 @@ export const FeaturedWorkSection = ({
                                     tags={project.tags}
                                     video={project.video}
                                     layout="grid"
-                                    index={index + 3} // Offset index for delay calculations
+                                    index={index + 3}
+                                    githubUrl={project.githubUrl}
+                                    liveUrl={project.liveUrl}
                                 />
                             ))}
                     </div>

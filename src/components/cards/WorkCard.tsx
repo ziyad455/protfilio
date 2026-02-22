@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '../../lib/utils';
+import { ExternalLink, Github } from 'lucide-react';
 
 export interface WorkCardProps {
     name: string;          // Required
@@ -13,6 +14,8 @@ export interface WorkCardProps {
     layout?: 'featured' | 'grid'; // featured is full width, grid is two columns
     index?: number;
     target?: string;       // Optional, default "_blank"
+    githubUrl?: string | null;
+    liveUrl?: string | null;
 }
 
 export const WorkCard = ({
@@ -25,7 +28,9 @@ export const WorkCard = ({
     isShow = true,
     layout = 'grid',
     index = 0,
-    target = "_blank"
+    target = "_blank",
+    githubUrl,
+    liveUrl
 }: WorkCardProps) => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isPlaying, setIsPlaying] = useState(false);
@@ -247,6 +252,38 @@ export const WorkCard = ({
                         {description}
                     </p>
                 )}
+
+                {/* Action Buttons - always visible */}
+                <div className="flex flex-wrap gap-2 mt-4 relative z-20">
+                    {liveUrl ? (
+                        <a
+                            href={liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-light border border-primary/20 dark:border-primary/30 hover:bg-primary hover:text-white dark:hover:bg-primary-light dark:hover:text-neutral-900 transition-all duration-200"
+                        >
+                            <ExternalLink size={12} /> Live Demo
+                        </a>
+                    ) : (
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-400 dark:text-neutral-500 border border-neutral-200/50 dark:border-neutral-700/50 cursor-not-allowed">
+                            <ExternalLink size={12} /> Live Demo
+                        </span>
+                    )}
+                    {githubUrl ? (
+                        <a
+                            href={githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200 border border-neutral-200/50 dark:border-neutral-700/50 hover:bg-neutral-800 hover:text-white dark:hover:bg-neutral-200 dark:hover:text-neutral-900 transition-all duration-200"
+                        >
+                            <Github size={12} /> Source Code
+                        </a>
+                    ) : (
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-400 dark:text-neutral-500 border border-neutral-200/50 dark:border-neutral-700/50 cursor-not-allowed">
+                            <Github size={12} /> Source Code
+                        </span>
+                    )}
+                </div>
             </div>
 
             {/* Link overlay for entire card */}
