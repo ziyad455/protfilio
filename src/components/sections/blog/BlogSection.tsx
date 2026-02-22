@@ -54,6 +54,7 @@ interface BlogSectionProps {
     title?: string;
     description?: string;
     limit?: number;
+    showAll?: boolean;
     showViewAllButton?: boolean;
 }
 
@@ -61,6 +62,7 @@ export const BlogSection = ({
     title = "Latest Articles ↓",
     description = "These are my notes and articles on design, development and life thinking.",
     limit = 3,
+    showAll = false,
     showViewAllButton = true
 }: BlogSectionProps) => {
     const [articles, setArticles] = useState<any[]>(defaultArticles);
@@ -111,7 +113,7 @@ export const BlogSection = ({
         loadArticles();
     }, []);
 
-    const displayArticles = articles.slice(0, limit);
+    const displayArticles = showAll ? articles : articles.slice(0, limit);
 
     if (loading) {
         return (
