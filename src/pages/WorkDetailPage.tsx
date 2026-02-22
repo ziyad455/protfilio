@@ -118,13 +118,21 @@ export const WorkDetailPage = () => {
 
                 {/* Action buttons */}
                 <div className="flex flex-wrap gap-3 mb-12" data-aos="fade-up-sm" data-aos-delay="150">
-                    {project.liveUrl && (
+                    {project.liveUrl ? (
                         <Button as="a" href={project.liveUrl} target="_blank" variant="primary">
                             Live Demo <ExternalLink size={16} className="ml-2" />
                         </Button>
+                    ) : (
+                        <Button variant="primary" disabled className="opacity-50 cursor-not-allowed pointer-events-none">
+                            Live Demo <ExternalLink size={16} className="ml-2" />
+                        </Button>
                     )}
-                    {project.githubUrl && (
+                    {project.githubUrl ? (
                         <Button as="a" href={project.githubUrl} target="_blank" variant="outline">
+                            <Github size={16} className="mr-2" /> Source Code
+                        </Button>
+                    ) : (
+                        <Button variant="outline" disabled className="opacity-50 cursor-not-allowed pointer-events-none">
                             <Github size={16} className="mr-2" /> Source Code
                         </Button>
                     )}
