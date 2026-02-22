@@ -4,6 +4,7 @@ import { useTheme } from '../../context/ThemeContext';
 import { cn } from '../../lib/utils';
 import { Sun, Moon, Menu, X, Download } from 'lucide-react';
 import { Button } from '../ui/Button';
+import { fetchAPI } from '../../services/api';
 
 const navLinks = [
     { name: 'Home', url: '/' },
@@ -15,6 +16,7 @@ export const Navbar = () => {
     const { theme, toggleTheme } = useTheme();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [resumeUrl, setResumeUrl] = useState('/resume.pdf');
 
     // Track scroll for backdrop blur effect
     useEffect(() => {
@@ -23,6 +25,27 @@ export const Navbar = () => {
         };
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    // Fetch dynamic resume link from Strapi
+    useEffect(() => {
+        const fetchResume = async () => {
+            try {
+                const response = await fetchAPI('/api/socials');
+                if (response.data && Array.isArray(response.data)) {
+                    const resumeLink = response.data.find((item: any) => {
+                        const name = (item.attributes?.platform || item.platform || '').toLowerCase();
+                        return name === 'resume' || name === 'cv';
+                    });
+                    if (resumeLink) {
+                        setResumeUrl(resumeLink.attributes?.url || resumeLink.url);
+                    }
+                }
+            } catch (err) {
+                console.debug('Resume link fetch failed, using default');
+            }
+        };
+        fetchResume();
     }, []);
 
     // Lock body scroll when mobile menu is open
@@ -138,7 +161,7 @@ export const Navbar = () => {
                             <div className="relative z-10 w-full px-5 mt-3 sm:hidden">
                                 <Button
                                     as="a"
-                                    href="/resume.pdf"
+                                    href={resumeUrl}
                                     target="_blank"
                                     variant="primary"
                                     className="w-full justify-center"
@@ -154,7 +177,7 @@ export const Navbar = () => {
                             {/* Resume Button (Desktop) */}
                             <Button
                                 as="a"
-                                href="/resume.pdf"
+                                href={resumeUrl}
                                 target="_blank"
                                 variant="primary"
                                 size="sm"
