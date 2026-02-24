@@ -5,6 +5,7 @@ import { Button } from '../../ui/Button';
 import { AnimatedText } from '../../ui/AnimatedText';
 import { HeroCard } from './HeroCard';
 import { fetchAPI } from '../../../services/api';
+import { CACHE_TTL } from '../../../services/cacheService';
 import { ArrowUpRight } from 'lucide-react';
 
 interface HeroData {
@@ -24,7 +25,7 @@ export const HeroSection = () => {
         const loadData = async () => {
             try {
                 // Populate roles and profileImage relations
-                const response = await fetchAPI('/api/hero?populate=*');
+                const response = await fetchAPI('/api/hero?populate=*', {}, { key: 'hero', ttlMs: CACHE_TTL.STATIC });
                 console.log('API Hero Raw Response:', response);
                 if (response.data) {
                     // Strapi v4 sometimes returns data.attributes, sometimes just data directly depending on config

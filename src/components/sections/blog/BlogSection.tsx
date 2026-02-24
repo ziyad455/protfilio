@@ -4,6 +4,7 @@ import { Typography } from '../../ui/Typography';
 import { Button } from '../../ui/Button';
 import { BlogCard } from '../../cards/BlogCard';
 import { fetchAPI } from '../../../services/api';
+import { CACHE_TTL } from '../../../services/cacheService';
 import { AnimatedText } from '../../ui/AnimatedText';
 import { Link } from 'react-router-dom';
 
@@ -76,7 +77,7 @@ export const BlogSection = ({
     useEffect(() => {
         const loadArticles = async () => {
             try {
-                const response = await fetchAPI('/api/articles?populate=*');
+                const response = await fetchAPI('/api/articles?populate=*', {}, { key: 'articles', ttlMs: CACHE_TTL.LIST });
                 console.log('API Articles Raw Response:', response);
 
                 if (response.data && Array.isArray(response.data) && response.data.length > 0) {

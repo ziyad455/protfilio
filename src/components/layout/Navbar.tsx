@@ -5,6 +5,7 @@ import { cn } from '../../lib/utils';
 import { Sun, Moon, Menu, X, Download } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { fetchAPI } from '../../services/api';
+import { CACHE_TTL } from '../../services/cacheService';
 
 const navLinks = [
     { name: 'Home', url: '/' },
@@ -31,7 +32,7 @@ export const Navbar = () => {
     useEffect(() => {
         const fetchResume = async () => {
             try {
-                const response = await fetchAPI('/api/socials');
+                const response = await fetchAPI('/api/socials', {}, { key: 'socials', ttlMs: CACHE_TTL.STATIC });
                 if (response.data && Array.isArray(response.data)) {
                     const resumeLink = response.data.find((item: any) => {
                         const name = (item.attributes?.platform || item.platform || '').toLowerCase();

@@ -4,6 +4,7 @@ import { Typography } from '../../ui/Typography';
 import { Button } from '../../ui/Button';
 import { WorkCard } from '../../cards/WorkCard';
 import { fetchAPI } from '../../../services/api';
+import { CACHE_TTL } from '../../../services/cacheService';
 import { AnimatedText } from '../../ui/AnimatedText';
 import { Link } from 'react-router-dom';
 
@@ -98,7 +99,7 @@ export const FeaturedWorkSection = ({
         const loadProjects = async () => {
             try {
                 // Populate coverImage and techStack relations
-                const response = await fetchAPI('/api/projects?populate=*');
+                const response = await fetchAPI('/api/projects?populate=*', {}, { key: 'projects', ttlMs: CACHE_TTL.LIST });
                 console.log('API Projects Raw Response:', response);
 
                 if (response.data && Array.isArray(response.data) && response.data.length > 0) {

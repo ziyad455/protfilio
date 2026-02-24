@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { SectionProvider } from '../../ui/SectionProvider';
 import { Typography } from '../../ui/Typography';
 import { fetchAPI } from '../../../services/api';
+import { CACHE_TTL } from '../../../services/cacheService';
 
 interface SkillData {
     id: number;
@@ -22,7 +23,7 @@ export const AboutSection = () => {
     useEffect(() => {
         const loadData = async () => {
             try {
-                const response = await fetchAPI('/api/about?populate=*');
+                const response = await fetchAPI('/api/about?populate=*', {}, { key: 'about', ttlMs: CACHE_TTL.STATIC });
                 console.log('API About Raw Response:', response);
                 if (response.data) {
                     const aboutData = response.data.attributes || response.data;

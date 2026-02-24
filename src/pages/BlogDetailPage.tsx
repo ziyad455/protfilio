@@ -4,6 +4,7 @@ import { SectionProvider } from '../components/ui/SectionProvider';
 import { Typography } from '../components/ui/Typography';
 import { Button } from '../components/ui/Button';
 import { fetchAPI } from '../services/api';
+import { CACHE_TTL } from '../services/cacheService';
 import { ArrowLeft, Calendar, Clock } from 'lucide-react';
 
 const STRAPI_URL = import.meta.env.VITE_STRAPI_API_URL || '';
@@ -28,7 +29,7 @@ export const BlogDetailPage = () => {
     useEffect(() => {
         const loadArticle = async () => {
             try {
-                const response = await fetchAPI(`/api/articles?filters[slug][$eq]=${slug}&populate=*`);
+                const response = await fetchAPI(`/api/articles?filters[slug][$eq]=${slug}&populate=*`, {}, { key: `article_${slug}`, ttlMs: CACHE_TTL.LIST });
                 if (response.data && response.data.length > 0) {
                     const item = response.data[0];
                     const attrs = item.attributes || item;
