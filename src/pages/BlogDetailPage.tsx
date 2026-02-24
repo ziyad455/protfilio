@@ -1,77 +1,16 @@
-import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { SectionProvider } from '../components/ui/SectionProvider';
 import { Typography } from '../components/ui/Typography';
 import { Button } from '../components/ui/Button';
-import { fetchAPI } from '../services/api';
-import { CACHE_TTL } from '../services/cacheService';
 import { ArrowLeft, Calendar, Clock } from 'lucide-react';
-
-const STRAPI_URL = import.meta.env.VITE_STRAPI_API_URL || '';
-
-interface ArticleData {
-    id: number;
-    title: string;
-    slug: string;
-    excerpt: string;
-    content: string;
-    coverImage: any;
-    publishDate: string;
-    readingTime: string;
-}
+import articlesData from '../data/articles.json';
 
 export const BlogDetailPage = () => {
     const { slug } = useParams();
-    const [article, setArticle] = useState<ArticleData | null>(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
 
-    useEffect(() => {
-        const loadArticle = async () => {
-            try {
-                const response = await fetchAPI(`/api/articles?filters[slug][$eq]=${slug}&populate=*`, {}, { key: `article_${slug}`, ttlMs: CACHE_TTL.LIST });
-                if (response.data && response.data.length > 0) {
-                    const item = response.data[0];
-                    const attrs = item.attributes || item;
-                    setArticle({
-                        id: item.id,
-                        title: attrs.title,
-                        slug: attrs.slug,
-                        excerpt: attrs.excerpt || '',
-                        content: attrs.content || '',
-                        coverImage: attrs.coverImage,
-                        publishDate: attrs.publishDate || attrs.createdAt,
-                        readingTime: attrs.readingTime || '5 min read',
-                    });
-                } else {
-                    setError(true);
-                }
-            } catch (err) {
-                console.error('Failed to fetch article:', err);
-                setError(true);
-            } finally {
-                setLoading(false);
-            }
-        };
-        loadArticle();
-    }, [slug]);
+    const article = articlesData.find((a) => a.slug === slug);
 
-    const getImageUrl = (img: any): string => {
-        if (!img) return '';
-        const url = img?.url || img?.data?.attributes?.url || '';
-        if (url.startsWith('http')) return url;
-        return `${STRAPI_URL}${url}`;
-    };
-
-    if (loading) {
-        return (
-            <SectionProvider className="py-24 md:py-32 min-h-[70vh] flex items-center justify-center">
-                <div className="w-8 h-8 rounded-full border-4 border-primary border-t-transparent animate-spin" />
-            </SectionProvider>
-        );
-    }
-
-    if (error || !article) {
+    if (!article) {
         return (
             <SectionProvider className="py-24 md:py-32 min-h-[70vh] flex items-center justify-center">
                 <div className="text-center">
@@ -87,7 +26,6 @@ export const BlogDetailPage = () => {
         );
     }
 
-    const coverUrl = getImageUrl(article.coverImage);
     const formattedDate = new Date(article.publishDate).toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
@@ -127,10 +65,10 @@ export const BlogDetailPage = () => {
                     </header>
 
                     {/* Cover image */}
-                    {coverUrl && (
+                    {article.coverImage && (
                         <div className="rounded-2xl overflow-hidden mb-12 border border-neutral-200/50 dark:border-neutral-700/50" data-aos="fade-up-sm" data-aos-delay="150">
                             <img
-                                src={coverUrl}
+                                src={article.coverImage}
                                 alt={article.title}
                                 className="w-full h-auto object-cover"
                             />

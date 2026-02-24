@@ -1,75 +1,10 @@
-import { useEffect, useState } from 'react';
 import { SectionProvider } from '../../ui/SectionProvider';
 import { Typography } from '../../ui/Typography';
 import { Button } from '../../ui/Button';
 import { WorkCard } from '../../cards/WorkCard';
-import { fetchAPI } from '../../../services/api';
-import { CACHE_TTL } from '../../../services/cacheService';
 import { AnimatedText } from '../../ui/AnimatedText';
 import { Link } from 'react-router-dom';
-
-interface ProjectAttributes {
-    title: string;
-    slug: string;
-    tagline: string;
-    liveUrl?: string;
-    githubUrl?: string;
-    coverImage: any;
-    techStack: { data: { id: number; attributes: { name: string } }[] } | any;
-    isFeatured: boolean;
-}
-
-interface ProjectData {
-    id: number;
-    attributes: ProjectAttributes;
-    // Strapi V4 flat structure support
-    title?: string;
-    tagline?: string;
-    liveUrl?: string;
-    githubUrl?: string;
-    coverImage?: any;
-    techStack?: any;
-    isFeatured?: boolean;
-}
-
-// Fallback dummy data if Strapi is empty
-const defaultProjects = [
-    {
-        name: "Design system & Application ui",
-        description: "Building a comprehensive design system for a complex enterprise application to ensure consistency and speed up development.",
-        image: "/assets/works/01.jpg",
-        url: "#",
-        tags: ["Design System", "UI/UX", "Figma"]
-    },
-    {
-        name: "E-commerce Redesign",
-        description: "Complete overhaul of an e-commerce platform focusing on conversion rate optimization and mobile-first experience.",
-        image: "/assets/works/02.jpg",
-        url: "#",
-        tags: ["E-commerce", "Web Design"]
-    },
-    {
-        name: "Fintech Dashboard",
-        description: "A data-rich dashboard for a financial technology startup, organizing complex information into intuitive visualizations.",
-        image: "/assets/works/03.jpg",
-        url: "#",
-        tags: ["Dashboard", "Fintech"]
-    },
-    {
-        name: "Marketing Website",
-        description: "High-converting marketing website for a SaaS startup with scroll animations and 3D elements.",
-        image: "/assets/works/04.jpg",
-        url: "#",
-        tags: ["Web Design", "Framer Motion"]
-    },
-    {
-        name: "Mobile App Design",
-        description: "iOS and Android app design for a wellness startup, focusing on calm and accessible user interfaces.",
-        image: "/assets/works/05.jpg",
-        url: "#",
-        tags: ["Mobile", "App Design"]
-    }
-];
+import projectsData from '../../../data/projects.json';
 
 interface FeaturedWorkSectionProps {
     title?: string;
@@ -86,65 +21,16 @@ export const FeaturedWorkSection = ({
     showAll = false,
     showViewAllButton = true
 }: FeaturedWorkSectionProps) => {
-    const [projects, setProjects] = useState<any[]>(defaultProjects);
-    const [loading, setLoading] = useState(true);
-
-    // Handle both local relative URLs and Strapi Cloud absolute URLs
-    const getImageUrl = (url?: string, defaultUrl?: string) => {
-        if (!url) return defaultUrl || '/assets/home/gradientshub.jpg';
-        return url.startsWith('http') ? url : `${import.meta.env.VITE_STRAPI_API_URL}${url}`;
-    };
-
-    useEffect(() => {
-        const loadProjects = async () => {
-            try {
-                // Populate coverImage and techStack relations
-                const response = await fetchAPI('/api/projects?populate=*', {}, { key: 'projects', ttlMs: CACHE_TTL.LIST });
-                console.log('API Projects Raw Response:', response);
-
-                if (response.data && Array.isArray(response.data) && response.data.length > 0) {
-                    const mappedProjects = response.data.map((item: ProjectData) => {
-                        // Support both nested attributes and flat structures
-                        const attrs = item.attributes || item;
-
-                        // Extract cover media URL and MIME type
-                        const rawCoverUrl = attrs.coverImage?.url || attrs.coverImage?.data?.attributes?.url;
-                        const coverMime: string = attrs.coverImage?.mime || attrs.coverImage?.data?.attributes?.mime || '';
-                        const isVideo = coverMime.startsWith('video/');
-
-                        // Extract tags correctly
-                        let tagsList: string[] = [];
-                        if (attrs.techStack?.data && Array.isArray(attrs.techStack.data)) {
-                            tagsList = attrs.techStack.data.map((tech: any) => tech.attributes?.name || tech.name);
-                        } else if (Array.isArray(attrs.techStack)) {
-                            tagsList = attrs.techStack.map((tech: any) => tech.name || tech);
-                        }
-
-                        return {
-                            name: attrs.title || 'Untitled Project',
-                            description: attrs.tagline || '',
-                            url: `/works/${attrs.slug || item.id}`,
-                            image: getImageUrl(isVideo ? undefined : rawCoverUrl, '/assets/works/01.jpg'),
-                            video: isVideo ? getImageUrl(rawCoverUrl) : undefined,
-                            tags: tagsList,
-                            isShow: true,
-                            githubUrl: attrs.githubUrl || null,
-                            liveUrl: attrs.liveUrl || null
-                        };
-                    });
-
-                    setProjects(mappedProjects);
-                }
-            } catch (err) {
-                console.error('Failed to fetch projects data:', err);
-                // Keep defaultProjects on error
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        loadProjects();
-    }, []);
+    const projects = projectsData.map((p) => ({
+        name: p.title,
+        description: p.tagline,
+        url: `/works/${p.slug}`,
+        image: p.coverImage,
+        tags: p.techStack,
+        isShow: true,
+        githubUrl: p.githubUrl,
+        liveUrl: p.liveUrl,
+    }));
 
     let displayProjects = [...projects];
 
@@ -158,14 +44,6 @@ export const FeaturedWorkSection = ({
     const featuredProjects = displayProjects.slice(0, 3);
     // Rest are grid (2 col)
     const gridProjects = displayProjects.slice(3);
-
-    if (loading) {
-        return (
-            <SectionProvider className="py-16 md:py-16 md:pb-12 min-h-[50vh] flex items-center justify-center border-t border-dashed border-gray-200 dark:border-neutral-800">
-                <div className="w-8 h-8 rounded-full border-4 border-primary border-t-transparent animate-spin"></div>
-            </SectionProvider>
-        );
-    }
 
     return (
         <SectionProvider className="py-16 md:py-16 md:pb-12 border-t border-dashed border-gray-200 dark:border-neutral-800">
@@ -195,7 +73,6 @@ export const FeaturedWorkSection = ({
                                     image={project.image}
                                     url={project.url}
                                     tags={project.tags}
-                                    video={project.video}
                                     layout="featured"
                                     index={index}
                                     githubUrl={project.githubUrl}
@@ -218,7 +95,6 @@ export const FeaturedWorkSection = ({
                                     image={project.image}
                                     url={project.url}
                                     tags={project.tags}
-                                    video={project.video}
                                     layout="grid"
                                     index={index + 3}
                                     githubUrl={project.githubUrl}

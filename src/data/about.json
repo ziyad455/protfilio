@@ -1,0 +1,26 @@
+{
+    "title": "About Me",
+    "content": "Software Engineer Intern at INVENEO, specializing in accessible web systems and AI-integrated applications. Currently pursuing a diploma in Software Engineering at the Specialized Institute of Applied Technology NTIC, with a foundation in Mathematics and Physics.\n\nContributed to a humanitarian AI translation project during the Google DeepMind Hackathon, supporting data processing pipelines and ML-driven workflows.\n\nInterested in scalable system design, AI agents, and building production-grade web applications that solve real-world problems.",
+    "skills": [
+        "Laravel",
+        "Astro",
+        "React",
+        "Strapi",
+        "TypeScript",
+        "n8n",
+        "python",
+        "Docker",
+        "Express.js",
+        "FastAPI",
+        "LangChain",
+        "Flask",
+        "MongoDB",
+        "MySQL",
+        "PostgreSQL",
+        "Node.js",
+        "SQLite",
+        "scikit-learn",
+        "Classification Models",
+        "Fine-tuning"
+    ]
+}

@@ -1,0 +1,12 @@
+[
+    {
+        "platform": "Github",
+        "url": "github.com/ziyad455",
+        "iconIdentifier": "Github"
+    },
+    {
+        "platform": "Resume",
+        "url": "/resume.pdf",
+        "iconIdentifier": "Resume"
+    }
+]

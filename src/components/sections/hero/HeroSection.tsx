@@ -1,78 +1,12 @@
-import { useEffect, useState } from 'react';
 import { SectionProvider } from '../../ui/SectionProvider';
 import { Typography } from '../../ui/Typography';
 import { Button } from '../../ui/Button';
 import { AnimatedText } from '../../ui/AnimatedText';
 import { HeroCard } from './HeroCard';
-import { fetchAPI } from '../../../services/api';
-import { CACHE_TTL } from '../../../services/cacheService';
 import { ArrowUpRight } from 'lucide-react';
-
-interface HeroData {
-    greeting: string;
-    name: string;
-    description: string;
-    resumeLink: string;
-    roles: { data: { id: number; attributes: { name: string } }[] };
-    profileImage: any; // Using any temporarily to avoid strict type collisions with both nested and flat responses
-}
+import heroData from '../../../data/hero.json';
 
 export const HeroSection = () => {
-    const [data, setData] = useState<HeroData | null>(null);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const loadData = async () => {
-            try {
-                // Populate roles and profileImage relations
-                const response = await fetchAPI('/api/hero?populate=*', {}, { key: 'hero', ttlMs: CACHE_TTL.STATIC });
-                console.log('API Hero Raw Response:', response);
-                if (response.data) {
-                    // Strapi v4 sometimes returns data.attributes, sometimes just data directly depending on config
-                    const heroData = response.data.attributes || response.data;
-                    console.log('Setting Hero Data:', heroData);
-                    setData(heroData);
-                }
-            } catch (err) {
-                console.error('Failed to fetch Hero data:', err);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        loadData();
-    }, []);
-
-    // Provide some default fallback data if Strapi is empty or disconnected
-    const displayData = data || {
-        greeting: "Hi, I'm",
-        name: "Ricoui",
-        description: "I'm a web/UI designer with 8+ years of experience. I love blending design and code to create captivating visuals and interactive experiences.",
-        resumeLink: "#",
-        roles: { data: [] },
-        profileImage: { data: null }
-    };
-
-    // Handle both local relative URLs and Strapi Cloud absolute URLs
-    const getImageUrl = (url?: string) => {
-        if (!url) return '/assets/home/gradientshub.jpg';
-        return url.startsWith('http') ? url : `${import.meta.env.VITE_STRAPI_API_URL}${url}`;
-    };
-
-    console.log('Hero Profile Image Data:', displayData.profileImage);
-
-    // Check for both the classic v4 nested structure and the flat structure we're seeing in the logs
-    const rawImageUrl = displayData.profileImage?.url || displayData.profileImage?.data?.attributes?.url;
-    const imageUrl = getImageUrl(rawImageUrl);
-
-    if (loading) {
-        return (
-            <SectionProvider className="h-[70vh] flex items-center justify-center">
-                <div className="w-8 h-8 rounded-full border-4 border-primary border-t-transparent animate-spin"></div>
-            </SectionProvider>
-        );
-    }
-
     return (
         <SectionProvider className="mt-16 md:mt-20 lg:mt-24 mb-16 relative z-20">
             <div className="flex flex-col items-center justify-between md:flex-row gap-12 lg:gap-16">
@@ -94,7 +28,7 @@ export const HeroSection = () => {
 
                     <Typography variant="h1" className="mb-6 h-[1.3em] overflow-visible">
                         <AnimatedText
-                            content={`${displayData.greeting} ${displayData.name}`}
+                            content={`${heroData.greeting}${heroData.name}`}
                             delay={0.1}
                             duration={0.5}
                             stagger={0.08}
@@ -104,7 +38,7 @@ export const HeroSection = () => {
 
                     <Typography variant="p" className="mb-8 max-w-[500px] mx-auto md:mx-0">
                         <AnimatedText
-                            content={displayData.description}
+                            content={heroData.description}
                             delay={0.3}
                             duration={0.5}
                             stagger={0.015}
@@ -120,7 +54,7 @@ export const HeroSection = () => {
                     >
                         <Button
                             as="a"
-                            href={displayData.resumeLink}
+                            href={heroData.resumeLink}
                             target="_blank"
                             rel="noopener noreferrer"
                             variant="primary"
@@ -198,7 +132,7 @@ export const HeroSection = () => {
                     data-aos-once="true"
                 >
                     <HeroCard
-                        imageUrl={imageUrl}
+                        imageUrl={heroData.profileImage}
                         title="Profile"
                         link="#"
                     />

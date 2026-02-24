@@ -1,83 +1,16 @@
-import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { SectionProvider } from '../components/ui/SectionProvider';
 import { Typography } from '../components/ui/Typography';
 import { Button } from '../components/ui/Button';
-import { fetchAPI } from '../services/api';
-import { CACHE_TTL } from '../services/cacheService';
 import { ArrowLeft, ExternalLink, Github } from 'lucide-react';
-
-const STRAPI_URL = import.meta.env.VITE_STRAPI_API_URL || '';
-
-interface ProjectData {
-    id: number;
-    title: string;
-    slug: string;
-    tagline: string;
-    description: string;
-    coverImage: any;
-    gallery: any[];
-    techStack: any[];
-    githubUrl: string | null;
-    liveUrl: string | null;
-    isFeatured: boolean;
-}
+import projectsData from '../data/projects.json';
 
 export const WorkDetailPage = () => {
     const { slug } = useParams();
-    const [project, setProject] = useState<ProjectData | null>(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
 
-    useEffect(() => {
-        const loadProject = async () => {
-            try {
-                const response = await fetchAPI(`/api/projects?filters[slug][$eq]=${slug}&populate=*`, {}, { key: `project_${slug}`, ttlMs: CACHE_TTL.LIST });
-                if (response.data && response.data.length > 0) {
-                    const item = response.data[0];
-                    const attrs = item.attributes || item;
-                    setProject({
-                        id: item.id,
-                        title: attrs.title,
-                        slug: attrs.slug,
-                        tagline: attrs.tagline || '',
-                        description: attrs.description || '',
-                        coverImage: attrs.coverImage,
-                        gallery: attrs.gallery || [],
-                        techStack: attrs.techStack || [],
-                        githubUrl: attrs.githubUrl,
-                        liveUrl: attrs.liveUrl,
-                        isFeatured: attrs.isFeatured,
-                    });
-                } else {
-                    setError(true);
-                }
-            } catch (err) {
-                console.error('Failed to fetch project:', err);
-                setError(true);
-            } finally {
-                setLoading(false);
-            }
-        };
-        loadProject();
-    }, [slug]);
+    const project = projectsData.find((p) => p.slug === slug);
 
-    const getImageUrl = (img: any): string => {
-        if (!img) return '';
-        const url = img?.url || img?.data?.attributes?.url || '';
-        if (url.startsWith('http')) return url;
-        return `${STRAPI_URL}${url}`;
-    };
-
-    if (loading) {
-        return (
-            <SectionProvider className="py-24 md:py-32 min-h-[70vh] flex items-center justify-center">
-                <div className="w-8 h-8 rounded-full border-4 border-primary border-t-transparent animate-spin" />
-            </SectionProvider>
-        );
-    }
-
-    if (error || !project) {
+    if (!project) {
         return (
             <SectionProvider className="py-24 md:py-32 min-h-[70vh] flex items-center justify-center">
                 <div className="text-center">
@@ -92,8 +25,6 @@ export const WorkDetailPage = () => {
             </SectionProvider>
         );
     }
-
-    const coverUrl = getImageUrl(project.coverImage);
 
     return (
         <div className="relative site-container z-20 w-full mx-auto px-4 xl:px-0">
@@ -139,33 +70,16 @@ export const WorkDetailPage = () => {
                     )}
                 </div>
 
-                {/* Cover media (image or video) */}
-                {coverUrl && (() => {
-                    const coverMime: string = project.coverImage?.mime || project.coverImage?.data?.attributes?.mime || '';
-                    const isVideo = coverMime.startsWith('video/');
-
-                    return (
-                        <div className="rounded-2xl overflow-hidden mb-12 border border-neutral-200/50 dark:border-neutral-700/50" data-aos="fade-up-sm" data-aos-delay="200">
-                            {isVideo ? (
-                                <video
-                                    src={coverUrl}
-                                    autoPlay
-                                    loop
-                                    muted
-                                    playsInline
-                                    preload="auto"
-                                    className="w-full h-auto object-cover"
-                                />
-                            ) : (
-                                <img
-                                    src={coverUrl}
-                                    alt={project.title}
-                                    className="w-full h-auto object-cover"
-                                />
-                            )}
-                        </div>
-                    );
-                })()}
+                {/* Cover image */}
+                {project.coverImage && (
+                    <div className="rounded-2xl overflow-hidden mb-12 border border-neutral-200/50 dark:border-neutral-700/50" data-aos="fade-up-sm" data-aos-delay="200">
+                        <img
+                            src={project.coverImage}
+                            alt={project.title}
+                            className="w-full h-auto object-cover"
+                        />
+                    </div>
+                )}
 
                 {/* Tech stack */}
                 {project.techStack && project.techStack.length > 0 && (
@@ -174,12 +88,12 @@ export const WorkDetailPage = () => {
                             Tech Stack
                         </Typography>
                         <div className="flex flex-wrap gap-2">
-                            {project.techStack.map((tech: any) => (
+                            {project.techStack.map((tech) => (
                                 <span
-                                    key={tech.id}
+                                    key={tech}
                                     className="px-4 py-2 rounded-xl bg-gradient-to-b from-[#f7f8f0] to-[#f1f2f9] dark:from-gray-900 dark:to-gray-800 border border-gray-200/50 dark:border-gray-700/50 text-neutral-700 dark:text-neutral-200 font-medium text-sm"
                                 >
-                                    {tech.name || tech.attributes?.name}
+                                    {tech}
                                 </span>
                             ))}
                         </div>
@@ -205,14 +119,11 @@ export const WorkDetailPage = () => {
                             Gallery
                         </Typography>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            {project.gallery.map((img: any, i: number) => {
-                                const imgUrl = getImageUrl(img);
-                                return imgUrl ? (
-                                    <div key={i} className="rounded-2xl overflow-hidden border border-neutral-200/50 dark:border-neutral-700/50">
-                                        <img src={imgUrl} alt={`${project.title} screenshot ${i + 1}`} className="w-full h-auto object-cover" loading="lazy" />
-                                    </div>
-                                ) : null;
-                            })}
+                            {project.gallery.map((imgUrl, i) => (
+                                <div key={i} className="rounded-2xl overflow-hidden border border-neutral-200/50 dark:border-neutral-700/50">
+                                    <img src={imgUrl} alt={`${project.title} screenshot ${i + 1}`} className="w-full h-auto object-cover" loading="lazy" />
+                                </div>
+                            ))}
                         </div>
                     </div>
                 )}

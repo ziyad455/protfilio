@@ -1,0 +1,104 @@
+[
+    {
+        "title": "Coursezy",
+        "slug": "project",
+        "tagline": "AI-Powered Online Learning Platform",
+        "description": "Coursezy is a modern, AI-powered full-stack learning platform built with Laravel 12 and React 19 + TypeScript. At the heart of the platform is an intelligent AI agent built using LangChain and Hugging Face, enabling advanced conversational assistance, smart content interaction, and dynamic learning support.\n\nThe backend exposes a secure RESTful API with Sanctum authentication, real-time broadcasting via Pusher, and scalable media handling through Cloudinary. On the frontend, Vite ensures high performance, Redux Toolkit manages global state, and Tailwind CSS with Radix UI delivers a clean, accessible, and responsive interface enriched with smooth animations and optional 3D experiences.\n\nBy combining modern full-stack architecture with an AI-driven agent layer, Coursezy demonstrates scalable backend engineering, real-time systems integration, and intelligent application design in a production-ready environment.",
+        "coverImage": "/assets/projects/project-cover.png",
+        "gallery": [
+            "/assets/projects/project-gallery-1.png",
+            "/assets/projects/project-gallery-2.png",
+            "/assets/projects/project-gallery-3.png",
+            "/assets/projects/project-gallery-4.png",
+            "/assets/projects/project-gallery-5.png",
+            "/assets/projects/project-gallery-6.png"
+        ],
+        "techStack": [
+            "laravel",
+            "LangChain",
+            "MySQL",
+            "Cloudinary",
+            "React TS",
+            "Tailwind CSS",
+            "GSAP",
+            "TypeScript"
+        ],
+        "githubUrl": "https://github.com/ziyad455/Coursezy_V2",
+        "liveUrl": null,
+        "isFeatured": true
+    },
+    {
+        "title": "FindMyPet",
+        "slug": "project-1",
+        "tagline": "FindMyPet is a QR-based pet identification web app built with React, TypeScript, and Firebase,",
+        "description": "FindMyPet is a practical web application designed to help reunite lost pets with their owners quickly and safely. The platform allows pet owners to submit their personal information along with their pet's details through a simple form. Once submitted, the system generates a unique QR code that can be attached to the pet's collar.\n\nWhen the QR code is scanned, a clean and responsive public page instantly displays the pet's information and the owner's contact details, making it easy for anyone who finds the animal to reach out.\n\nBuilt with React + TypeScript on the frontend and powered by Firebase as a Backend-as-a-Service (BaaS) for real-time data storage and image hosting, the project demonstrates how modern web technologies can transform a simple idea into a meaningful, real-world solution.",
+        "coverImage": "/assets/projects/project-1-cover.png",
+        "gallery": [],
+        "techStack": [
+            "React TS",
+            "TypeScript",
+            "Tailwind CSS",
+            "Firebase",
+            "Cloudinary",
+            "GSAP"
+        ],
+        "githubUrl": "https://github.com/ziyad455/FindMyPet",
+        "liveUrl": "https://findmypet.ma/",
+        "isFeatured": false
+    },
+    {
+        "title": "CV Reviewer",
+        "slug": "project-2",
+        "tagline": "CV Reviewer is an AI-powered resume analysis tool built with LangChain",
+        "description": "CV Reviewer is an AI-driven application designed to generate structured, recruiter-style feedback on resumes. The goal was not simply to integrate a language model, but to build a system where AI logic and frontend experience work seamlessly together.\n\nThe AI layer is powered by LangChain with Llama-3, enabling structured prompt chaining and consistent, professional outputs. A custom PDF/DOCX parsing pipeline ensures reliable text extraction before analysis. On the frontend, React + TypeScript deliver a responsive interface with dynamic visualizations that present insights clearly — not just raw text.\n\nSpecial attention was given to handling unpredictable LLM latency, maintaining smooth UI rendering during long asynchronous processes, and ensuring structured, recruiter-quality feedback.\n\nCV Reviewer demonstrates practical AI orchestration, thoughtful UX design, and real-world application of modern full-stack engineering.",
+        "coverImage": "/assets/projects/project-2-cover.jpeg",
+        "gallery": [],
+        "techStack": [
+            "React TS",
+            "LangChain",
+            "Tailwind CSS",
+            "TypeScript"
+        ],
+        "githubUrl": "https://github.com/ziyad455/Cv_reviewer",
+        "liveUrl": "https://www.linkedin.com/posts/ziyad-tber_react-langchain-python-activity-7428392457354018816-0evR?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFVDatkBPoSoxk6e9DxOhuG9OpqsXOvPD14",
+        "isFeatured": false
+    },
+    {
+        "title": "marketing website",
+        "slug": "project-3",
+        "tagline": "full-stack marketing website",
+        "description": "A production-grade, full-stack marketing website built for a real client, featuring a headless CMS architecture that decouples content management from the frontend for performance and flexibility.\n\nI contributed to the project by implementing key frontend features and CMS integrations:\n\nFrontend (marketing-site): Assisted with component-driven architecture, GSAP animations, dynamic cookie consent system, GDPR-compliant cookie management, and integration of the HubSpot lead generation form. Worked with Astro, TypeScript, SCSS/Sass, Swiper.js sliders, and Vimeo video embeds.\n\nCMS (marketing-site-cms): Supported content structuring in Strapi v5 with PostgreSQL, media management via AWS S3, and implementation of SEO plugins and user permission settings.",
+        "coverImage": "/assets/projects/project-3-cover.png",
+        "gallery": [],
+        "techStack": [
+            "Astro",
+            "Strapi",
+            "Tailwind CSS",
+            "TypeScript",
+            "GSAP",
+            "AWS"
+        ],
+        "githubUrl": null,
+        "liveUrl": "https://www.nexusinclusion.com/",
+        "isFeatured": false
+    },
+    {
+        "title": "Arije Academia",
+        "slug": "project-4",
+        "tagline": "Arije Academia is a full-featured web platform designed to manage and showcase wellness and therapeutic",
+        "description": "Arije Academia is a full-featured web platform designed to manage and showcase wellness and therapeutic training courses. It delivers a rich, multi-language experience in Arabic, French, and English, with dynamic course pages, service landing pages, and an interactive contact system.\n\nBuilt with Laravel 12 and MongoDB, the platform supports flexible course content, nested translations, curriculum structures, certifications, FAQs, and related courses. The frontend leverages Blade, Tailwind CSS, Alpine.js, and Swiper.js for a responsive, modern UI.\n\nKey highlights:\n\nMulti-language support with RTL for Arabic\n\nDynamic course and service pages loaded from MongoDB\n\nModular Blade components for reusable UI elements\n\nAuthentication and user management via Laravel Breeze\n\nSmooth, interactive frontend powered by Tailwind and Alpine.js\n\nArije Academia demonstrates modern full-stack engineering, flexible data modeling, and a polished user experience for educational platforms.",
+        "coverImage": "/assets/projects/project-4-cover.png",
+        "gallery": [
+            "/assets/projects/project-4-gallery-1.png",
+            "/assets/projects/project-4-gallery-2.png",
+            "/assets/projects/project-4-gallery-3.png"
+        ],
+        "techStack": [
+            "laravel",
+            "Tailwind CSS"
+        ],
+        "githubUrl": "https://github.com/ziyad455/Arije_academia",
+        "liveUrl": null,
+        "isFeatured": false
+    }
+]

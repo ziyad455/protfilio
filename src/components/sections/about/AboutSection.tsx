@@ -1,64 +1,8 @@
-import { useEffect, useState } from 'react';
 import { SectionProvider } from '../../ui/SectionProvider';
 import { Typography } from '../../ui/Typography';
-import { fetchAPI } from '../../../services/api';
-import { CACHE_TTL } from '../../../services/cacheService';
-
-interface SkillData {
-    id: number;
-    name: string;
-}
-
-interface AboutData {
-    title: string;
-    content: string;
-    skills: SkillData[];
-    toolsImage: { data: { attributes: { url: string } } | null } | { url: string } | null;
-}
+import aboutData from '../../../data/about.json';
 
 export const AboutSection = () => {
-    const [data, setData] = useState<AboutData | null>(null);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const loadData = async () => {
-            try {
-                const response = await fetchAPI('/api/about?populate=*', {}, { key: 'about', ttlMs: CACHE_TTL.STATIC });
-                console.log('API About Raw Response:', response);
-                if (response.data) {
-                    const aboutData = response.data.attributes || response.data;
-                    console.log('Setting About Data:', aboutData);
-                    setData(aboutData);
-                }
-            } catch (err) {
-                console.error('Failed to fetch About data:', err);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        loadData();
-    }, []);
-
-    const displayData = data || {
-        title: "About Me",
-        content: "Great design isn't just a pretty interface—it helps people reach their goals naturally, fuels sustainable growth, and keeps systems solid as you scale. I connect design and development, bringing strategy, usability, and execution together to turn visuals into real, measurable results.",
-        skills: [
-            { id: 1, name: 'Product Design' },
-            { id: 2, name: 'Website Design' },
-            { id: 3, name: 'React Development' }
-        ],
-        toolsImage: null
-    };
-
-    if (loading) {
-        return (
-            <SectionProvider className="h-[40vh] flex items-center justify-center" id="about">
-                <div className="w-8 h-8 rounded-full border-4 border-primary border-t-transparent animate-spin"></div>
-            </SectionProvider>
-        );
-    }
-
     return (
         <SectionProvider id="about" className="py-24 border-t border-dashed border-gray-200 dark:border-neutral-800">
             <div className="w-full flex justify-between items-start flex-col lg:flex-row gap-12">
@@ -71,7 +15,7 @@ export const AboutSection = () => {
                     data-aos-once="true"
                 >
                     <Typography variant="h2" className="text-3xl lg:text-4xl sticky top-24">
-                        {displayData.title}
+                        {aboutData.title}
                     </Typography>
                 </div>
 
@@ -84,7 +28,7 @@ export const AboutSection = () => {
                         data-aos-delay="100"
                         data-aos-once="true"
                     >
-                        {displayData.content}
+                        {aboutData.content}
                     </Typography>
 
                     <div
@@ -98,15 +42,15 @@ export const AboutSection = () => {
                         </Typography>
 
                         <div className="flex flex-wrap gap-3">
-                            {displayData.skills?.map((skill, index) => (
+                            {aboutData.skills.map((skill, index) => (
                                 <div
-                                    key={skill.id}
+                                    key={skill}
                                     className="px-4 py-2 rounded-xl bg-gradient-to-b from-[#f7f8f0] to-[#f1f2f9] dark:from-gray-900 dark:to-gray-800 border border-gray-200/50 dark:border-gray-700/50 text-neutral-700 dark:text-neutral-200 font-medium text-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
                                     data-aos="zoom-in"
                                     data-aos-delay={200 + (index * 50)}
                                     data-aos-once="true"
                                 >
-                                    {skill.name}
+                                    {skill}
                                 </div>
                             ))}
                         </div>

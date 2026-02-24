@@ -1,55 +1,10 @@
-import { useEffect, useState } from 'react';
 import { SectionProvider } from '../../ui/SectionProvider';
 import { Typography } from '../../ui/Typography';
 import { Button } from '../../ui/Button';
 import { BlogCard } from '../../cards/BlogCard';
-import { fetchAPI } from '../../../services/api';
-import { CACHE_TTL } from '../../../services/cacheService';
 import { AnimatedText } from '../../ui/AnimatedText';
 import { Link } from 'react-router-dom';
-
-interface ArticleAttributes {
-    title: string;
-    slug: string;
-    excerpt?: string;
-    coverImage: any;
-    publishDate: string;
-}
-
-interface ArticleData {
-    id: number;
-    attributes: ArticleAttributes;
-    // Strapi V4 flat structure support
-    title?: string;
-    slug?: string;
-    excerpt?: string;
-    coverImage?: any;
-    publishDate?: string;
-}
-
-const defaultArticles = [
-    {
-        title: "The Future of Web Design in 2025",
-        slug: "future-of-web-design",
-        excerpt: "Exploring the upcoming trends that will shape the aesthetic and functional web experiences of the next decade.",
-        publishDate: "2024-10-15T00:00:00.000Z",
-        img: "/assets/blog/01.jpg"
-    },
-    {
-        title: "Mastering Framer Motion for React Developers",
-        slug: "mastering-framer-motion",
-        excerpt: "A comprehensive guide to adding delightful micro-interactions and complex animations to your React stack.",
-        publishDate: "2024-09-22T00:00:00.000Z",
-        img: "/assets/blog/02.jpg"
-    },
-    {
-        title: "Why Minimalist UI is Here to Stay",
-        slug: "minimalist-ui",
-        excerpt: "Analyzing the psychological impact of clean, uncluttered interfaces and how to achieve them effectively.",
-        publishDate: "2024-08-05T00:00:00.000Z",
-        img: "/assets/blog/03.jpg"
-    }
-];
+import articlesData from '../../../data/articles.json';
 
 interface BlogSectionProps {
     title?: string;
@@ -66,63 +21,16 @@ export const BlogSection = ({
     showAll = false,
     showViewAllButton = true
 }: BlogSectionProps) => {
-    const [articles, setArticles] = useState<any[]>(defaultArticles);
-    const [loading, setLoading] = useState(true);
-
-    const getImageUrl = (url?: string, defaultUrl?: string) => {
-        if (!url) return defaultUrl || '/assets/home/gradientshub.jpg';
-        return url.startsWith('http') ? url : `${import.meta.env.VITE_STRAPI_API_URL}${url}`;
-    };
-
-    useEffect(() => {
-        const loadArticles = async () => {
-            try {
-                const response = await fetchAPI('/api/articles?populate=*', {}, { key: 'articles', ttlMs: CACHE_TTL.LIST });
-                console.log('API Articles Raw Response:', response);
-
-                if (response.data && Array.isArray(response.data) && response.data.length > 0) {
-                    const mappedArticles = response.data.map((item: ArticleData) => {
-                        const attrs = item.attributes || item;
-                        const rawImageUrl = attrs.coverImage?.url || attrs.coverImage?.data?.attributes?.url;
-
-                        // Ensure we have a valid date string
-                        const dateString = attrs.publishDate || new Date().toISOString();
-
-                        return {
-                            title: attrs.title || 'Untitled Article',
-                            slug: attrs.slug || `article-${item.id}`,
-                            excerpt: attrs.excerpt || '',
-                            publishDate: dateString,
-                            img: getImageUrl(rawImageUrl, '/assets/blog/default.jpg')
-                        };
-                    });
-
-                    // Sort by publish date descending
-                    const sortedArticles = mappedArticles.sort((a: any, b: any) => {
-                        return new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime();
-                    });
-
-                    setArticles(sortedArticles);
-                }
-            } catch (err) {
-                console.error('Failed to fetch articles data:', err);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        loadArticles();
-    }, []);
+    // Articles are already sorted by publishDate descending in the JSON
+    const articles = articlesData.map((a) => ({
+        title: a.title,
+        slug: a.slug,
+        excerpt: a.excerpt,
+        publishDate: a.publishDate,
+        img: a.coverImage,
+    }));
 
     const displayArticles = showAll ? articles : articles.slice(0, limit);
-
-    if (loading) {
-        return (
-            <SectionProvider className="py-16 md:py-16 md:pb-12 min-h-[40vh] flex items-center justify-center border-t border-dashed border-gray-200 dark:border-neutral-800">
-                <div className="w-8 h-8 rounded-full border-4 border-primary border-t-transparent animate-spin"></div>
-            </SectionProvider>
-        );
-    }
 
     return (
         <SectionProvider className="py-16 md:py-16 md:pb-12 border-t border-dashed border-gray-200 dark:border-neutral-800">

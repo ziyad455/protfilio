@@ -4,8 +4,7 @@ import { useTheme } from '../../context/ThemeContext';
 import { cn } from '../../lib/utils';
 import { Sun, Moon, Menu, X, Download } from 'lucide-react';
 import { Button } from '../ui/Button';
-import { fetchAPI } from '../../services/api';
-import { CACHE_TTL } from '../../services/cacheService';
+import socialsData from '../../data/socials.json';
 
 const navLinks = [
     { name: 'Home', url: '/' },
@@ -13,11 +12,16 @@ const navLinks = [
     { name: 'Blog', url: '/blog' },
 ];
 
+// Derive resume URL from static data
+const resumeEntry = socialsData.find(
+    (item) => item.platform.toLowerCase() === 'resume' || item.platform.toLowerCase() === 'cv'
+);
+const resumeUrl = resumeEntry?.url || '/resume.pdf';
+
 export const Navbar = () => {
     const { theme, toggleTheme } = useTheme();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const [resumeUrl, setResumeUrl] = useState('/resume.pdf');
 
     // Track scroll for backdrop blur effect
     useEffect(() => {
@@ -26,27 +30,6 @@ export const Navbar = () => {
         };
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    // Fetch dynamic resume link from Strapi
-    useEffect(() => {
-        const fetchResume = async () => {
-            try {
-                const response = await fetchAPI('/api/socials', {}, { key: 'socials', ttlMs: CACHE_TTL.STATIC });
-                if (response.data && Array.isArray(response.data)) {
-                    const resumeLink = response.data.find((item: any) => {
-                        const name = (item.attributes?.platform || item.platform || '').toLowerCase();
-                        return name === 'resume' || name === 'cv';
-                    });
-                    if (resumeLink) {
-                        setResumeUrl(resumeLink.attributes?.url || resumeLink.url);
-                    }
-                }
-            } catch (err) {
-                console.debug('Resume link fetch failed, using default');
-            }
-        };
-        fetchResume();
     }, []);
 
     // Lock body scroll when mobile menu is open

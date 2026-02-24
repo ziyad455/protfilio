@@ -1,0 +1,10 @@
+{
+    "greeting": "Hi, I'm ",
+    "name": "Ziyad Tber",
+    "description": "Software Engineer focused on building scalable and intelligent web systems.",
+    "resumeLink": "/resume.pdf",
+    "roles": [
+        "Software Engineer"
+    ],
+    "profileImage": "/assets/hero/profile.jpg"
+}
