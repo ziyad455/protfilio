@@ -107,8 +107,10 @@ export const FeaturedWorkSection = ({
                         // Support both nested attributes and flat structures
                         const attrs = item.attributes || item;
 
-                        // Extract image correctly
-                        const rawImageUrl = attrs.coverImage?.url || attrs.coverImage?.data?.attributes?.url;
+                        // Extract cover media URL and MIME type
+                        const rawCoverUrl = attrs.coverImage?.url || attrs.coverImage?.data?.attributes?.url;
+                        const coverMime: string = attrs.coverImage?.mime || attrs.coverImage?.data?.attributes?.mime || '';
+                        const isVideo = coverMime.startsWith('video/');
 
                         // Extract tags correctly
                         let tagsList: string[] = [];
@@ -122,7 +124,8 @@ export const FeaturedWorkSection = ({
                             name: attrs.title || 'Untitled Project',
                             description: attrs.tagline || '',
                             url: `/works/${attrs.slug || item.id}`,
-                            image: getImageUrl(rawImageUrl, '/assets/works/01.jpg'),
+                            image: getImageUrl(isVideo ? undefined : rawCoverUrl, '/assets/works/01.jpg'),
+                            video: isVideo ? getImageUrl(rawCoverUrl) : undefined,
                             tags: tagsList,
                             isShow: true,
                             githubUrl: attrs.githubUrl || null,

@@ -139,16 +139,33 @@ export const WorkDetailPage = () => {
                     )}
                 </div>
 
-                {/* Cover image */}
-                {coverUrl && (
-                    <div className="rounded-2xl overflow-hidden mb-12 border border-neutral-200/50 dark:border-neutral-700/50" data-aos="fade-up-sm" data-aos-delay="200">
-                        <img
-                            src={coverUrl}
-                            alt={project.title}
-                            className="w-full h-auto object-cover"
-                        />
-                    </div>
-                )}
+                {/* Cover media (image or video) */}
+                {coverUrl && (() => {
+                    const coverMime: string = project.coverImage?.mime || project.coverImage?.data?.attributes?.mime || '';
+                    const isVideo = coverMime.startsWith('video/');
+
+                    return (
+                        <div className="rounded-2xl overflow-hidden mb-12 border border-neutral-200/50 dark:border-neutral-700/50" data-aos="fade-up-sm" data-aos-delay="200">
+                            {isVideo ? (
+                                <video
+                                    src={coverUrl}
+                                    autoPlay
+                                    loop
+                                    muted
+                                    playsInline
+                                    preload="auto"
+                                    className="w-full h-auto object-cover"
+                                />
+                            ) : (
+                                <img
+                                    src={coverUrl}
+                                    alt={project.title}
+                                    className="w-full h-auto object-cover"
+                                />
+                            )}
+                        </div>
+                    );
+                })()}
 
                 {/* Tech stack */}
                 {project.techStack && project.techStack.length > 0 && (
