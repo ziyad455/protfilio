@@ -100,5 +100,24 @@
         "githubUrl": "https://github.com/ziyad455/Arije_academia",
         "liveUrl": null,
         "isFeatured": false
+    },
+    {
+        "title": "Project 5 – Jewelry Store Showcase",
+        "slug": "project-5",
+        "tagline": "A modern jewelry store application focused on premium visual presentation and intuitive browsing.",
+        "description": "Project 5 – Jewelry Store Showcase is a modern jewelry store application designed to showcase products in a clean, organized, and visually appealing way. The experience focuses on intuitive navigation, clear content structure, and refined UI details that reflect the premium nature of jewelry items.\n\nKey highlights:\n\nOrganized product catalog with clear categories\n\nResponsive and user-friendly design\n\nConsistent architecture with existing projects\n\nEmphasis on visual presentation and product details",
+        "coverImage": "/assets/projects/project-5-cover.png",
+        "gallery": [
+            "/assets/projects/project-5-gallery-1.png",
+            "/assets/projects/project-5-gallery-2.png"
+        ],
+        "techStack": [
+            "React TS",
+            "TypeScript",
+            "Tailwind CSS"
+        ],
+        "githubUrl": null,
+        "liveUrl": "https://previewul.netlify.app/asanorajewels",
+        "isFeatured": false
     }
 ]
