@@ -28,6 +28,30 @@
         "isFeatured": true
     },
     {
+        "title": "Fault Finder",
+        "slug": "fault-finder",
+        "tagline": "WCAG 2.2 accessibility demo site with real fail/pass examples.",
+        "description": "Fault Finder is an educational accessibility demo site built to make WCAG 2.2 criteria easier to understand through hands-on examples. The application organizes 87 success criteria across Perceivable, Operable, Understandable, and Robust, with a clear dashboard, persistent criteria navigation, and direct routes for individual examples.\n\nI reviewed the live site across the overview, criteria navigation, contrast, ARIA widget, and status message examples. The experience includes WCAG reference links, nested sidebar navigation, and paired fail/pass demonstrations that explain what breaks accessibility and how the corrected implementation resolves it.\n\nThe project highlights accessible UI education, structured content modeling for a large technical reference, interactive React components, and thoughtful information architecture for developers and accessibility reviewers.",
+        "coverImage": "/assets/projects/ftf-cover.png",
+        "gallery": [
+            "/assets/projects/ftf-criteria-overview.png",
+            "/assets/projects/ftf-contrast.png",
+            "/assets/projects/ftf-toggle.png",
+            "/assets/projects/ftf-status.png"
+        ],
+        "techStack": [
+            "React TS",
+            "TypeScript",
+            "Tailwind CSS",
+            "Vite",
+            "WCAG 2.2",
+            "Accessibility"
+        ],
+        "githubUrl": null,
+        "liveUrl": "https://ftf.dev.nexusinclusion.com/",
+        "isFeatured": false
+    },
+    {
         "title": "FindMyPet",
         "slug": "project-1",
         "tagline": "FindMyPet is a QR-based pet identification web app built with React, TypeScript, and Firebase,",
