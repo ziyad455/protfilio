@@ -28,6 +28,45 @@
         "isFeatured": true
     },
     {
+        "title": "Marketing Website",
+        "slug": "project-3",
+        "tagline": "Production-grade full-stack marketing website with CMS integrations and SEO optimization.",
+        "description": "A production-grade, full-stack marketing website built for a real client, featuring a headless CMS architecture that decouples content management from the frontend for performance and flexibility.\n\nI contributed to the project by implementing key frontend features and CMS integrations:\n\nFrontend (marketing-site): Assisted with component-driven architecture, GSAP animations, dynamic cookie consent system, GDPR-compliant cookie management, and integration of the HubSpot lead generation form. Worked with Astro, TypeScript, SCSS/Sass, Swiper.js sliders, and Vimeo video embeds.\n\nCMS (marketing-site-cms): Supported content structuring in Strapi v5 with PostgreSQL, media management via AWS S3, and implementation of SEO plugins and user permission settings.\n\nI am also actively working on SEO optimization for this project with support from the team, improving metadata quality, technical search readiness, and overall discoverability.",
+        "coverImage": "/assets/projects/project-3-cover.png",
+        "gallery": [],
+        "techStack": [
+            "Astro",
+            "Strapi",
+            "Tailwind CSS",
+            "TypeScript",
+            "GSAP",
+            "AWS",
+            "SEO"
+        ],
+        "githubUrl": null,
+        "liveUrl": "https://www.nexusinclusion.com/",
+        "isFeatured": false
+    },
+    {
+        "title": "Arije Academia",
+        "slug": "project-4",
+        "tagline": "Arije Academia is a full-featured web platform designed to manage and showcase wellness and therapeutic",
+        "description": "Arije Academia is a full-featured web platform designed to manage and showcase wellness and therapeutic training courses. It delivers a rich, multi-language experience in Arabic, French, and English, with dynamic course pages, service landing pages, and an interactive contact system.\n\nBuilt with Laravel 12 and MongoDB, the platform supports flexible course content, nested translations, curriculum structures, certifications, FAQs, and related courses. The frontend leverages Blade, Tailwind CSS, Alpine.js, and Swiper.js for a responsive, modern UI.\n\nKey highlights:\n\nMulti-language support with RTL for Arabic\n\nDynamic course and service pages loaded from MongoDB\n\nModular Blade components for reusable UI elements\n\nAuthentication and user management via Laravel Breeze\n\nSmooth, interactive frontend powered by Tailwind and Alpine.js\n\nArije Academia demonstrates modern full-stack engineering, flexible data modeling, and a polished user experience for educational platforms.",
+        "coverImage": "/assets/projects/project-4-cover.png",
+        "gallery": [
+            "/assets/projects/project-4-gallery-1.png",
+            "/assets/projects/project-4-gallery-2.png",
+            "/assets/projects/project-4-gallery-3.png"
+        ],
+        "techStack": [
+            "laravel",
+            "Tailwind CSS"
+        ],
+        "githubUrl": "https://github.com/ziyad455/Arije_academia",
+        "liveUrl": null,
+        "isFeatured": false
+    },
+    {
         "title": "Fault Finder",
         "slug": "fault-finder",
         "tagline": "WCAG 2.2 accessibility demo site with real fail/pass examples.",
@@ -52,25 +91,6 @@
         "isFeatured": false
     },
     {
-        "title": "FindMyPet",
-        "slug": "project-1",
-        "tagline": "FindMyPet is a QR-based pet identification web app built with React, TypeScript, and Firebase,",
-        "description": "FindMyPet is a practical web application designed to help reunite lost pets with their owners quickly and safely. The platform allows pet owners to submit their personal information along with their pet's details through a simple form. Once submitted, the system generates a unique QR code that can be attached to the pet's collar.\n\nWhen the QR code is scanned, a clean and responsive public page instantly displays the pet's information and the owner's contact details, making it easy for anyone who finds the animal to reach out.\n\nBuilt with React + TypeScript on the frontend and powered by Firebase as a Backend-as-a-Service (BaaS) for real-time data storage and image hosting, the project demonstrates how modern web technologies can transform a simple idea into a meaningful, real-world solution.",
-        "coverImage": "/assets/projects/project-1-cover.png",
-        "gallery": [],
-        "techStack": [
-            "React TS",
-            "TypeScript",
-            "Tailwind CSS",
-            "Firebase",
-            "Cloudinary",
-            "GSAP"
-        ],
-        "githubUrl": "https://github.com/ziyad455/FindMyPet",
-        "liveUrl": "https://findmypet.ma/",
-        "isFeatured": false
-    },
-    {
         "title": "CV Reviewer",
         "slug": "project-2",
         "tagline": "CV Reviewer is an AI-powered resume analysis tool built with LangChain",
@@ -88,41 +108,22 @@
         "isFeatured": false
     },
     {
-        "title": "marketing website",
-        "slug": "project-3",
-        "tagline": "full-stack marketing website",
-        "description": "A production-grade, full-stack marketing website built for a real client, featuring a headless CMS architecture that decouples content management from the frontend for performance and flexibility.\n\nI contributed to the project by implementing key frontend features and CMS integrations:\n\nFrontend (marketing-site): Assisted with component-driven architecture, GSAP animations, dynamic cookie consent system, GDPR-compliant cookie management, and integration of the HubSpot lead generation form. Worked with Astro, TypeScript, SCSS/Sass, Swiper.js sliders, and Vimeo video embeds.\n\nCMS (marketing-site-cms): Supported content structuring in Strapi v5 with PostgreSQL, media management via AWS S3, and implementation of SEO plugins and user permission settings.",
-        "coverImage": "/assets/projects/project-3-cover.png",
+        "title": "FindMyPet",
+        "slug": "project-1",
+        "tagline": "FindMyPet is a QR-based pet identification web app built with React, TypeScript, and Firebase,",
+        "description": "FindMyPet is a practical web application designed to help reunite lost pets with their owners quickly and safely. The platform allows pet owners to submit their personal information along with their pet's details through a simple form. Once submitted, the system generates a unique QR code that can be attached to the pet's collar.\n\nWhen the QR code is scanned, a clean and responsive public page instantly displays the pet's information and the owner's contact details, making it easy for anyone who finds the animal to reach out.\n\nBuilt with React + TypeScript on the frontend and powered by Firebase as a Backend-as-a-Service (BaaS) for real-time data storage and image hosting, the project demonstrates how modern web technologies can transform a simple idea into a meaningful, real-world solution.",
+        "coverImage": "/assets/projects/project-1-cover.png",
         "gallery": [],
         "techStack": [
-            "Astro",
-            "Strapi",
-            "Tailwind CSS",
+            "React TS",
             "TypeScript",
-            "GSAP",
-            "AWS"
+            "Tailwind CSS",
+            "Firebase",
+            "Cloudinary",
+            "GSAP"
         ],
-        "githubUrl": null,
-        "liveUrl": "https://www.nexusinclusion.com/",
-        "isFeatured": false
-    },
-    {
-        "title": "Arije Academia",
-        "slug": "project-4",
-        "tagline": "Arije Academia is a full-featured web platform designed to manage and showcase wellness and therapeutic",
-        "description": "Arije Academia is a full-featured web platform designed to manage and showcase wellness and therapeutic training courses. It delivers a rich, multi-language experience in Arabic, French, and English, with dynamic course pages, service landing pages, and an interactive contact system.\n\nBuilt with Laravel 12 and MongoDB, the platform supports flexible course content, nested translations, curriculum structures, certifications, FAQs, and related courses. The frontend leverages Blade, Tailwind CSS, Alpine.js, and Swiper.js for a responsive, modern UI.\n\nKey highlights:\n\nMulti-language support with RTL for Arabic\n\nDynamic course and service pages loaded from MongoDB\n\nModular Blade components for reusable UI elements\n\nAuthentication and user management via Laravel Breeze\n\nSmooth, interactive frontend powered by Tailwind and Alpine.js\n\nArije Academia demonstrates modern full-stack engineering, flexible data modeling, and a polished user experience for educational platforms.",
-        "coverImage": "/assets/projects/project-4-cover.png",
-        "gallery": [
-            "/assets/projects/project-4-gallery-1.png",
-            "/assets/projects/project-4-gallery-2.png",
-            "/assets/projects/project-4-gallery-3.png"
-        ],
-        "techStack": [
-            "laravel",
-            "Tailwind CSS"
-        ],
-        "githubUrl": "https://github.com/ziyad455/Arije_academia",
-        "liveUrl": null,
+        "githubUrl": "https://github.com/ziyad455/FindMyPet",
+        "liveUrl": "https://findmypet.ma/",
         "isFeatured": false
     },
     {
