@@ -5,6 +5,7 @@ import { AnimatedText } from '../../ui/AnimatedText';
 import { HeroCard } from './HeroCard';
 import { ArrowUpRight } from 'lucide-react';
 import heroData from '../../../data/hero.json';
+import { cvUrl } from '../../../lib/cv';
 
 export const HeroSection = () => {
     return (
@@ -54,14 +55,14 @@ export const HeroSection = () => {
                     >
                         <Button
                             as="a"
-                            href={heroData.resumeLink}
+                            href={cvUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                             variant="primary"
                             size="lg"
                             className="font-semibold"
                         >
-                            View Resume <ArrowUpRight className="ml-2 w-4 h-4" />
+                            View My CV <ArrowUpRight className="ml-2 w-4 h-4" />
                         </Button>
                         <Button
                             as="a"

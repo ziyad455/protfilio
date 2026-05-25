@@ -4,19 +4,13 @@ import { useTheme } from '../../context/ThemeContext';
 import { cn } from '../../lib/utils';
 import { Sun, Moon, Menu, X, Download } from 'lucide-react';
 import { Button } from '../ui/Button';
-import socialsData from '../../data/socials.json';
+import { cvUrl } from '../../lib/cv';
 
 const navLinks = [
     { name: 'Home', url: '/' },
     { name: 'Works', url: '/works' },
     { name: 'Blog', url: '/blog' },
 ];
-
-// Derive resume URL from static data
-const resumeEntry = socialsData.find(
-    (item) => item.platform.toLowerCase() === 'resume' || item.platform.toLowerCase() === 'cv'
-);
-const resumeUrl = resumeEntry?.url || '/resume.pdf';
 
 export const Navbar = () => {
     const { theme, toggleTheme } = useTheme();
@@ -145,7 +139,7 @@ export const Navbar = () => {
                             <div className="relative z-10 w-full px-5 mt-3 sm:hidden">
                                 <Button
                                     as="a"
-                                    href={resumeUrl}
+                                    href={cvUrl}
                                     target="_blank"
                                     variant="primary"
                                     className="w-full justify-center"
@@ -161,7 +155,7 @@ export const Navbar = () => {
                             {/* Resume Button (Desktop) */}
                             <Button
                                 as="a"
-                                href={resumeUrl}
+                                href={cvUrl}
                                 target="_blank"
                                 variant="primary"
                                 size="sm"
