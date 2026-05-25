@@ -75,7 +75,7 @@
         "slug": "project-2",
         "tagline": "CV Reviewer is an AI-powered resume analysis tool built with LangChain",
         "description": "CV Reviewer is an AI-driven application designed to generate structured, recruiter-style feedback on resumes. The goal was not simply to integrate a language model, but to build a system where AI logic and frontend experience work seamlessly together.\n\nThe AI layer is powered by LangChain with Llama-3, enabling structured prompt chaining and consistent, professional outputs. A custom PDF/DOCX parsing pipeline ensures reliable text extraction before analysis. On the frontend, React + TypeScript deliver a responsive interface with dynamic visualizations that present insights clearly — not just raw text.\n\nSpecial attention was given to handling unpredictable LLM latency, maintaining smooth UI rendering during long asynchronous processes, and ensuring structured, recruiter-quality feedback.\n\nCV Reviewer demonstrates practical AI orchestration, thoughtful UX design, and real-world application of modern full-stack engineering.",
-        "coverImage": "/assets/projects/project-2-cover.jpeg",
+        "coverImage": "/assets/projects/project-2-cover.jpg",
         "gallery": [],
         "techStack": [
             "React TS",
