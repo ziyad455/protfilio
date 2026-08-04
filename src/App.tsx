@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import { TopBg } from './components/ui/TopBg';
 import { Navbar } from './components/layout/Navbar';
@@ -9,10 +10,21 @@ import { WorkDetailPage } from './pages/WorkDetailPage';
 import { BlogPage } from './pages/BlogPage';
 import { BlogDetailPage } from './pages/BlogDetailPage';
 
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
+
 function App() {
   return (
     <ThemeProvider>
       <Router>
+        <ScrollToTop />
         <div className="relative min-h-screen bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] transition-colors duration-300 overflow-x-hidden">
           {/* Subtle grid background overlay */}
           <div
@@ -40,4 +52,3 @@ function App() {
 }
 
 export default App;
-

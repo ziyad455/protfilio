@@ -16,6 +16,7 @@ export interface WorkCardProps {
     target?: string;       // Optional, default "_blank"
     githubUrl?: string | null;
     liveUrl?: string | null;
+    liveUrlLabel?: string;
 }
 
 export const WorkCard = ({
@@ -30,7 +31,8 @@ export const WorkCard = ({
     index = 0,
     target = "_blank",
     githubUrl,
-    liveUrl
+    liveUrl,
+    liveUrlLabel = 'Live Demo'
 }: WorkCardProps) => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isPlaying, setIsPlaying] = useState(false);
@@ -262,11 +264,11 @@ export const WorkCard = ({
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-light border border-primary/20 dark:border-primary/30 hover:bg-primary hover:text-white dark:hover:bg-primary-light dark:hover:text-neutral-900 transition-all duration-200"
                         >
-                            <ExternalLink size={12} /> Live Demo
+                                <ExternalLink size={12} /> {liveUrlLabel}
                         </a>
                     ) : (
                         <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-400 dark:text-neutral-500 border border-neutral-200/50 dark:border-neutral-700/50 cursor-not-allowed">
-                            <ExternalLink size={12} /> Live Demo
+                            <ExternalLink size={12} /> {liveUrlLabel}
                         </span>
                     )}
                     {githubUrl ? (

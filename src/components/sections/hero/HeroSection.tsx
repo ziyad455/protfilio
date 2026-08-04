@@ -9,7 +9,10 @@ import { cvUrl } from '../../../lib/cv';
 
 export const HeroSection = () => {
     return (
-        <SectionProvider className="mt-8 md:mt-10 lg:mt-12 mb-16 relative z-20">
+        <SectionProvider
+            paddingY="none"
+            className="pt-6 sm:pt-8 md:pt-10 lg:pt-12 pb-20 md:pb-32 mb-16 relative z-20"
+        >
             <div className="flex flex-col items-center justify-between md:flex-row gap-12 lg:gap-16">
 
                 {/* Left Content Area */}

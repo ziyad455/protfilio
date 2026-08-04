@@ -52,11 +52,11 @@ export const WorkDetailPage = () => {
                 <div className="flex flex-wrap gap-3 mb-12" data-aos="fade-up-sm" data-aos-delay="150">
                     {project.liveUrl ? (
                         <Button as="a" href={project.liveUrl} target="_blank" variant="primary">
-                            Live Demo <ExternalLink size={16} className="ml-2" />
+                            {('liveUrlLabel' in project && project.liveUrlLabel) || 'Live Demo'} <ExternalLink size={16} className="ml-2" />
                         </Button>
                     ) : (
                         <Button variant="primary" disabled className="opacity-50 cursor-not-allowed pointer-events-none">
-                            Live Demo <ExternalLink size={16} className="ml-2" />
+                            {('liveUrlLabel' in project && project.liveUrlLabel) || 'Live Demo'} <ExternalLink size={16} className="ml-2" />
                         </Button>
                     )}
                     {project.githubUrl ? (

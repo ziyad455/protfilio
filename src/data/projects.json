@@ -1,5 +1,27 @@
 [
     {
+        "title": "DiffShow",
+        "slug": "diffshow",
+        "tagline": "Open-source CLI for polished, portable Git change reports.",
+        "description": "DiffShow is an open-source npm package.\n\nDiffShow turns local Git changes into a polished, self-contained before-and-after report, making it easier to see:\n\n→ Which files changed\n→ The code before and after\n→ Added and removed lines\n→ Differences between branches or commits\n→ Staged, unstaged, and untracked changes\n\nInstall it globally:\n\nnpm install -g diffshow\n\nGenerate a report:\n\ndiffshow\n\nCompare two branches:\n\ndiffshow compare main feature-branch\n\nIt also supports commit comparisons, Markdown output, custom output paths, exclusions, and configurable context lines. The full command reference is available in the repository.\n\nEverything runs locally. There is no server, account, telemetry, or source-code upload. Your code stays on your machine.\n\nBuilding DiffShow taught me much more than implementing the tool itself. I gained hands-on experience with Git internals, CLI design, npm packaging, automated testing, accessibility, security, semantic versioning, and maintaining a real open-source project.",
+        "coverImage": "/assets/projects/diffshow-cover.png",
+        "gallery": [
+            "/assets/projects/diffshow-gallery-1.png"
+        ],
+        "techStack": [
+            "TypeScript",
+            "Node.js",
+            "Git",
+            "HTML",
+            "CSS",
+            "Accessibility"
+        ],
+        "githubUrl": "https://github.com/ziyad455/diffshow",
+        "liveUrl": "https://www.npmjs.com/package/diffshow",
+        "liveUrlLabel": "npm Package",
+        "isFeatured": true
+    },
+    {
         "title": "Coursezy",
         "slug": "project",
         "tagline": "AI-Powered Online Learning Platform",

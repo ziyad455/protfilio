@@ -30,6 +30,7 @@ export const FeaturedWorkSection = ({
         isShow: true,
         githubUrl: p.githubUrl,
         liveUrl: p.liveUrl,
+        liveUrlLabel: 'liveUrlLabel' in p ? p.liveUrlLabel : undefined,
     }));
 
     let displayProjects = [...projects];
@@ -77,6 +78,7 @@ export const FeaturedWorkSection = ({
                                     index={index}
                                     githubUrl={project.githubUrl}
                                     liveUrl={project.liveUrl}
+                                    liveUrlLabel={project.liveUrlLabel}
                                 />
                             ))}
                     </div>
@@ -99,6 +101,7 @@ export const FeaturedWorkSection = ({
                                     index={index + 3}
                                     githubUrl={project.githubUrl}
                                     liveUrl={project.liveUrl}
+                                    liveUrlLabel={project.liveUrlLabel}
                                 />
                             ))}
                     </div>
