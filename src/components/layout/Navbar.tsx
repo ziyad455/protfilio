@@ -8,8 +8,7 @@ import { cvUrl } from '../../lib/cv';
 
 const navLinks = [
     { name: 'Home', url: '/' },
-    { name: 'Works', url: '/works' },
-    { name: 'Blog', url: '/blog' },
+    { name: 'Featured Work', url: '/works' },
 ];
 
 export const Navbar = () => {

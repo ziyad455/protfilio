@@ -4,9 +4,8 @@ export const WorksPage = () => {
     return (
         <div className="relative site-container z-20 w-full mx-auto px-4 xl:px-0">
             <FeaturedWorkSection
-                title="All Works ↓"
-                description="A complete collection of my projects — from concept to execution."
-                showAll={true}
+                title="Main Projects ↓"
+                description="My strongest professional and independent engineering work, followed by a broader collection of projects."
                 showViewAllButton={false}
             />
         </div>

@@ -6,9 +6,8 @@ import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { HomePage } from './pages/HomePage';
 import { WorksPage } from './pages/WorksPage';
+import { NexusCaseStudyPage } from './pages/NexusCaseStudyPage';
 import { WorkDetailPage } from './pages/WorkDetailPage';
-import { BlogPage } from './pages/BlogPage';
-import { BlogDetailPage } from './pages/BlogDetailPage';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -40,9 +39,8 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/works" element={<WorksPage />} />
+            <Route path="/works/nexus-inclusion" element={<NexusCaseStudyPage />} />
             <Route path="/works/:slug" element={<WorkDetailPage />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/blog/:slug" element={<BlogDetailPage />} />
           </Routes>
           <Footer />
         </div>
