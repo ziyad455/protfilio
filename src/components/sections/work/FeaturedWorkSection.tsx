@@ -5,9 +5,10 @@ import { Button } from '../../ui/Button';
 import { AnimatedText } from '../../ui/AnimatedText';
 import { FeaturedProjectCard } from '../../cards/FeaturedProjectCard';
 import { TamazightFeaturedCard } from '../../cards/TamazightFeaturedCard';
+import { SophiaFeaturedProject } from '../../cards/SophiaFeaturedProject';
 import { DiffShowFeaturedCard } from '../../cards/DiffShowFeaturedCard';
 import { WorkCard } from '../../cards/WorkCard';
-import { nexusProject, tamazightProject } from '../../../data/featuredWork';
+import { nexusProject, sophiaProject, tamazightProject } from '../../../data/featuredWork';
 import projectsData from '../../../data/projects.json';
 
 interface FeaturedWorkSectionProps {
@@ -42,6 +43,7 @@ export const FeaturedWorkSection = ({
                 <div className="space-y-8 md:space-y-10">
                     <FeaturedProjectCard project={nexusProject} index={0} />
                     <TamazightFeaturedCard project={tamazightProject} />
+                    <SophiaFeaturedProject project={sophiaProject} />
                     {diffShowProject && <DiffShowFeaturedCard project={diffShowProject} />}
                 </div>
 

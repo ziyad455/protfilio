@@ -26,7 +26,7 @@
         "slug": "project",
         "tagline": "AI-Powered Online Learning Platform",
         "description": "Coursezy is a modern, AI-powered full-stack learning platform built with Laravel 12 and React 19 + TypeScript. At the heart of the platform is an intelligent AI agent built using LangChain and Hugging Face, enabling advanced conversational assistance, smart content interaction, and dynamic learning support.\n\nThe backend exposes a secure RESTful API with Sanctum authentication, real-time broadcasting via Pusher, and scalable media handling through Cloudinary. On the frontend, Vite ensures high performance, Redux Toolkit manages global state, and Tailwind CSS with Radix UI delivers a clean, accessible, and responsive interface enriched with smooth animations and optional 3D experiences.\n\nBy combining modern full-stack architecture with an AI-driven agent layer, Coursezy demonstrates scalable backend engineering, real-time systems integration, and intelligent application design in a production-ready environment.",
-        "coverImage": "/assets/projects/project-cover.png",
+        "coverImage": "/assets/projects/coursezy-thumbnail.png",
         "gallery": [
             "/assets/projects/project-gallery-1.png",
             "/assets/projects/project-gallery-2.png",
@@ -74,7 +74,7 @@
         "slug": "project-4",
         "tagline": "Arije Academia is a full-featured web platform designed to manage and showcase wellness and therapeutic",
         "description": "Arije Academia is a full-featured web platform designed to manage and showcase wellness and therapeutic training courses. It delivers a rich, multi-language experience in Arabic, French, and English, with dynamic course pages, service landing pages, and an interactive contact system.\n\nBuilt with Laravel 12 and MongoDB, the platform supports flexible course content, nested translations, curriculum structures, certifications, FAQs, and related courses. The frontend leverages Blade, Tailwind CSS, Alpine.js, and Swiper.js for a responsive, modern UI.\n\nKey highlights:\n\nMulti-language support with RTL for Arabic\n\nDynamic course and service pages loaded from MongoDB\n\nModular Blade components for reusable UI elements\n\nAuthentication and user management via Laravel Breeze\n\nSmooth, interactive frontend powered by Tailwind and Alpine.js\n\nArije Academia demonstrates modern full-stack engineering, flexible data modeling, and a polished user experience for educational platforms.",
-        "coverImage": "/assets/projects/project-4-cover.png",
+        "coverImage": "/assets/projects/arije-academia-thumbnail.png",
         "gallery": [
             "/assets/projects/project-4-gallery-1.png",
             "/assets/projects/project-4-gallery-2.png",
@@ -93,7 +93,7 @@
         "slug": "fault-finder",
         "tagline": "WCAG 2.2 accessibility demo site with real fail/pass examples.",
         "description": "Fault Finder is an educational accessibility demo site built to make WCAG 2.2 criteria easier to understand through hands-on examples. The application organizes 87 success criteria across Perceivable, Operable, Understandable, and Robust, with a clear dashboard, persistent criteria navigation, and direct routes for individual examples.\n\nI reviewed the live site across the overview, criteria navigation, contrast, ARIA widget, and status message examples. The experience includes WCAG reference links, nested sidebar navigation, and paired fail/pass demonstrations that explain what breaks accessibility and how the corrected implementation resolves it.\n\nThe project highlights accessible UI education, structured content modeling for a large technical reference, interactive React components, and thoughtful information architecture for developers and accessibility reviewers.",
-        "coverImage": "/assets/projects/ftf-cover.png",
+        "coverImage": "/assets/projects/fault-finder-thumbnail.png",
         "gallery": [
             "/assets/projects/ftf-criteria-overview.png",
             "/assets/projects/ftf-contrast.png",
@@ -117,7 +117,7 @@
         "slug": "project-2",
         "tagline": "CV Reviewer is an AI-powered resume analysis tool built with LangChain",
         "description": "CV Reviewer is an AI-driven application designed to generate structured, recruiter-style feedback on resumes. The goal was not simply to integrate a language model, but to build a system where AI logic and frontend experience work seamlessly together.\n\nThe AI layer is powered by LangChain with Llama-3, enabling structured prompt chaining and consistent, professional outputs. A custom PDF/DOCX parsing pipeline ensures reliable text extraction before analysis. On the frontend, React + TypeScript deliver a responsive interface with dynamic visualizations that present insights clearly — not just raw text.\n\nSpecial attention was given to handling unpredictable LLM latency, maintaining smooth UI rendering during long asynchronous processes, and ensuring structured, recruiter-quality feedback.\n\nCV Reviewer demonstrates practical AI orchestration, thoughtful UX design, and real-world application of modern full-stack engineering.",
-        "coverImage": "/assets/projects/project-2-cover.jpg",
+        "coverImage": "/assets/projects/cv-reviewer-thumbnail.png",
         "gallery": [],
         "techStack": [
             "React TS",
@@ -134,7 +134,7 @@
         "slug": "project-1",
         "tagline": "FindMyPet is a QR-based pet identification web app built with React, TypeScript, and Firebase,",
         "description": "FindMyPet is a practical web application designed to help reunite lost pets with their owners quickly and safely. The platform allows pet owners to submit their personal information along with their pet's details through a simple form. Once submitted, the system generates a unique QR code that can be attached to the pet's collar.\n\nWhen the QR code is scanned, a clean and responsive public page instantly displays the pet's information and the owner's contact details, making it easy for anyone who finds the animal to reach out.\n\nBuilt with React + TypeScript on the frontend and powered by Firebase as a Backend-as-a-Service (BaaS) for real-time data storage and image hosting, the project demonstrates how modern web technologies can transform a simple idea into a meaningful, real-world solution.",
-        "coverImage": "/assets/projects/project-1-cover.png",
+        "coverImage": "/assets/projects/find-my-pet-thumbnail.png",
         "gallery": [],
         "techStack": [
             "React TS",
@@ -153,7 +153,7 @@
         "slug": "project-5",
         "tagline": "A modern jewelry store application focused on premium visual presentation and intuitive browsing.",
         "description": "Project 5 – Jewelry Store Showcase is a modern jewelry store application designed to showcase products in a clean, organized, and visually appealing way. The experience focuses on intuitive navigation, clear content structure, and refined UI details that reflect the premium nature of jewelry items.\n\nKey highlights:\n\nOrganized product catalog with clear categories\n\nResponsive and user-friendly design\n\nConsistent architecture with existing projects\n\nEmphasis on visual presentation and product details",
-        "coverImage": "/assets/projects/project-5-cover.png",
+        "coverImage": "/assets/projects/asanora-jewels-thumbnail.png",
         "gallery": [
             "/assets/projects/project-5-gallery-1.png",
             "/assets/projects/project-5-gallery-2.png"

@@ -5,22 +5,19 @@ import aboutData from '../../../data/about.json';
 export const AboutSection = () => {
     return (
         <SectionProvider id="about" className="py-24 border-t border-dashed border-gray-200 dark:border-neutral-800">
-            <div className="w-full flex justify-between items-start flex-col lg:flex-row gap-12">
-
-                {/* Left Side: Title */}
-                <div
-                    className="w-full lg:w-1/3"
+            <div className="w-full">
+                <header
+                    className="mb-10 w-full"
                     data-aos="fade-up-sm"
                     data-aos-duration="600"
                     data-aos-once="true"
                 >
-                    <Typography variant="h2" className="text-3xl lg:text-4xl sticky top-24">
+                    <Typography variant="h2" className="text-3xl lg:text-4xl">
                         {aboutData.title}
                     </Typography>
-                </div>
+                </header>
 
-                {/* Right Side: Content & Skills */}
-                <div className="w-full lg:w-2/3">
+                <div className="w-full max-w-5xl">
                     <Typography
                         variant="lead"
                         className="mb-12 whitespace-pre-line"
@@ -56,7 +53,6 @@ export const AboutSection = () => {
                         </div>
                     </div>
                 </div>
-
             </div>
         </SectionProvider>
     );

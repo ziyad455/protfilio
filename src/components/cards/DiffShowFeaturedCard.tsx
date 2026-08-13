@@ -14,13 +14,13 @@ interface DiffShowProject {
 
 export const DiffShowFeaturedCard = ({ project }: { project: DiffShowProject }) => (
     <article
-        className="mx-auto max-w-5xl overflow-hidden rounded-2xl border border-primary/15 bg-white/85 p-4 backdrop-blur-sm dark:bg-bg-secondary-dark sm:p-5"
+        className="mx-auto max-w-6xl overflow-hidden rounded-3xl border border-primary/15 bg-white/85 p-5 backdrop-blur-sm dark:bg-bg-secondary-dark sm:p-7 lg:p-8"
         data-aos="fade-up"
         data-aos-delay="100"
         data-aos-duration="700"
         data-aos-once="true"
     >
-        <div className="grid items-center gap-6 md:grid-cols-[0.9fr_1.1fr] md:gap-8">
+        <div className="grid items-center gap-8 md:grid-cols-[0.9fr_1.1fr] lg:gap-12">
             <img
                 src={project.coverImage}
                 alt="DiffShow HTML code review report interface"

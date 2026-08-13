@@ -7,6 +7,8 @@ import { Footer } from './components/layout/Footer';
 import { HomePage } from './pages/HomePage';
 import { WorksPage } from './pages/WorksPage';
 import { NexusCaseStudyPage } from './pages/NexusCaseStudyPage';
+import { SophiaProjectPage } from './pages/SophiaProjectPage';
+import { TamazightProjectPage } from './pages/TamazightProjectPage';
 import { WorkDetailPage } from './pages/WorkDetailPage';
 
 const ScrollToTop = () => {
@@ -40,6 +42,8 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/works" element={<WorksPage />} />
             <Route path="/works/nexus-inclusion" element={<NexusCaseStudyPage />} />
+            <Route path="/works/tamazight-multilingo" element={<TamazightProjectPage />} />
+            <Route path="/works/sophia" element={<SophiaProjectPage />} />
             <Route path="/works/:slug" element={<WorkDetailPage />} />
           </Routes>
           <Footer />
