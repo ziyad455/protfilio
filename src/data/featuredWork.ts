@@ -38,7 +38,7 @@ export const featuredProjects: FeaturedProject[] = [
         title: 'Nexus Inclusion',
         eyebrow: 'Professional production work',
         role: 'Software engineering across accessibility, technical SEO, frontend quality, and CMS-integrated delivery.',
-        summary: 'A flagship case study about treating accessibility, search, performance, and content systems as connected engineering concerns.',
+        summary: 'During my time at Inveneo, I worked on Nexus Inclusion, an Irish company focused on digital accessibility. I contributed to their platform across accessibility engineering, frontend quality and performance, technical SEO, and CMS development.',
         outcomeSummary: 'The case-study system is ready for verified production evidence, before-and-after comparisons, and measurable outcomes.',
         coverImage: '/assets/projects/project-3-cover.png',
         coverAlt: 'Nexus Inclusion website interface with accessibility and inclusion messaging',
