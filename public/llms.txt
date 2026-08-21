@@ -1,0 +1,19 @@
+# Ziyad Tber
+
+> Portfolio of Ziyad Tber, a software engineer in Marrakech, Morocco.
+
+Ziyad works across frontend engineering, accessibility, performance, technical SEO, and CMS-driven platforms.
+
+## Main pages
+
+- [Portfolio](https://ziyadtber.netlify.app/): Profile, skills, and selected work.
+- [Projects](https://ziyadtber.netlify.app/works): Main and additional engineering projects.
+- [Nexus Inclusion](https://ziyadtber.netlify.app/works/nexus-inclusion): Professional accessibility, technical SEO, frontend, and CMS work.
+- [Tamazight MultiLingo](https://ziyadtber.netlify.app/works/tamazight-multilingo): AI-powered multilingual translation project.
+- [Sophia](https://ziyadtber.netlify.app/works/sophia): Philosophy reading companion in active MVP development.
+- [DiffShow](https://ziyadtber.netlify.app/works/diffshow): Open-source Git change-reporting CLI.
+
+## Profiles
+
+- [GitHub](https://github.com/ziyad455)
+- [LinkedIn](https://www.linkedin.com/in/ziyad-tber/)

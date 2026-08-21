@@ -12,22 +12,24 @@ export const WorkDetailPage = () => {
 
     if (!project) {
         return (
-            <SectionProvider className="py-24 md:py-32 min-h-[70vh] flex items-center justify-center">
-                <div className="text-center">
-                    <Typography as="h1" variant="h1" className="text-4xl mb-4">
-                        Project Not Found
-                    </Typography>
-                    <p className="text-neutral-500 mb-8">The project you're looking for doesn't exist or has been removed.</p>
-                    <Button as={Link} to="/works" variant="outline">
-                        <ArrowLeft size={16} className="mr-2" /> Back to Works
-                    </Button>
-                </div>
-            </SectionProvider>
+            <main>
+                <SectionProvider className="py-24 md:py-32 min-h-[70vh] flex items-center justify-center">
+                    <div className="text-center">
+                        <Typography as="h1" variant="h1" className="text-4xl mb-4">
+                            Project Not Found
+                        </Typography>
+                        <p className="text-neutral-500 mb-8">The project you're looking for doesn't exist or has been removed.</p>
+                        <Button as={Link} to="/works" variant="outline">
+                            <ArrowLeft aria-hidden="true" size={16} className="mr-2" /> Back to Works
+                        </Button>
+                    </div>
+                </SectionProvider>
+            </main>
         );
     }
 
     return (
-        <div className="relative site-container z-20 w-full mx-auto px-4 xl:px-0">
+        <main className="relative site-container z-20 w-full mx-auto px-4 xl:px-0">
             <SectionProvider className="py-16 md:py-24">
                 {/* Back button */}
                 <div className="mb-8" data-aos="fade-up-sm">
@@ -51,7 +53,7 @@ export const WorkDetailPage = () => {
                 {/* Action buttons */}
                 <div className="flex flex-wrap gap-3 mb-12" data-aos="fade-up-sm" data-aos-delay="150">
                     {project.liveUrl ? (
-                        <Button as="a" href={project.liveUrl} target="_blank" variant="primary">
+                        <Button as="a" href={project.liveUrl} target="_blank" rel="noopener noreferrer" variant="primary">
                             {('liveUrlLabel' in project && project.liveUrlLabel) || 'Live Demo'} <ExternalLink size={16} className="ml-2" />
                         </Button>
                     ) : (
@@ -60,7 +62,7 @@ export const WorkDetailPage = () => {
                         </Button>
                     )}
                     {project.githubUrl ? (
-                        <Button as="a" href={project.githubUrl} target="_blank" variant="outline">
+                        <Button as="a" href={project.githubUrl} target="_blank" rel="noopener noreferrer" variant="outline">
                             <Github size={16} className="mr-2" /> Source Code
                         </Button>
                     ) : (
@@ -84,7 +86,7 @@ export const WorkDetailPage = () => {
                 {/* Tech stack */}
                 {project.techStack && project.techStack.length > 0 && (
                     <div className="mb-12" data-aos="fade-up-sm" data-aos-delay="250">
-                        <Typography as="h3" variant="h3" className="text-xl mb-4">
+                        <Typography as="h2" variant="h3" className="text-xl mb-4">
                             Tech Stack
                         </Typography>
                         <div className="flex flex-wrap gap-2">
@@ -103,7 +105,7 @@ export const WorkDetailPage = () => {
                 {/* Description */}
                 {project.description && (
                     <div className="max-w-4xl" data-aos="fade-up-sm" data-aos-delay="300">
-                        <Typography as="h3" variant="h3" className="text-xl mb-4">
+                        <Typography as="h2" variant="h3" className="text-xl mb-4">
                             About This Project
                         </Typography>
                         <div className="prose prose-lg dark:prose-invert max-w-none text-neutral-700 dark:text-neutral-300 leading-relaxed whitespace-pre-line">
@@ -115,7 +117,7 @@ export const WorkDetailPage = () => {
                 {/* Gallery */}
                 {project.gallery && project.gallery.length > 0 && (
                     <div className="mt-16" data-aos="fade-up-sm" data-aos-delay="350">
-                        <Typography as="h3" variant="h3" className="text-xl mb-6">
+                        <Typography as="h2" variant="h3" className="text-xl mb-6">
                             Gallery
                         </Typography>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -128,6 +130,6 @@ export const WorkDetailPage = () => {
                     </div>
                 )}
             </SectionProvider>
-        </div>
+        </main>
     );
 };

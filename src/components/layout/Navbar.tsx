@@ -49,7 +49,7 @@ export const Navbar = () => {
                 >
                     {/* Logo */}
                     <div className="flex-shrink-0 z-50">
-                        <Link to="/" className="h-10 text-base group relative z-30 flex items-center">
+                        <Link to="/" aria-label="Ziyad Tber — Home" className="h-10 text-base group relative z-30 flex items-center">
                             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-blue-600 dark:from-primary-light dark:to-blue-400 flex items-center justify-center text-white font-brand text-lg font-bold shadow-md">
                                 Z
                             </div>
