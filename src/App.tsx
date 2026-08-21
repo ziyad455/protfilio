@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Navigate, Routes, Route, useLocation } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import { TopBg } from './components/ui/TopBg';
 import { Navbar } from './components/layout/Navbar';
@@ -10,6 +10,8 @@ import { NexusCaseStudyPage } from './pages/NexusCaseStudyPage';
 import { SophiaProjectPage } from './pages/SophiaProjectPage';
 import { TamazightProjectPage } from './pages/TamazightProjectPage';
 import { WorkDetailPage } from './pages/WorkDetailPage';
+import { NotFoundPage } from './pages/NotFoundPage';
+import { RouteSeo } from './components/seo/RouteSeo';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -26,6 +28,7 @@ function App() {
     <ThemeProvider>
       <Router>
         <ScrollToTop />
+        <RouteSeo />
         <div className="relative min-h-screen bg-[var(--color-bg-primary)] dark:bg-[var(--color-bg-primary-dark)] transition-colors duration-300 overflow-x-hidden">
           {/* Subtle grid background overlay */}
           <div
@@ -44,7 +47,9 @@ function App() {
             <Route path="/works/nexus-inclusion" element={<NexusCaseStudyPage />} />
             <Route path="/works/tamazight-multilingo" element={<TamazightProjectPage />} />
             <Route path="/works/sophia" element={<SophiaProjectPage />} />
+            <Route path="/works/project-3" element={<Navigate replace to="/works/nexus-inclusion" />} />
             <Route path="/works/:slug" element={<WorkDetailPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
           <Footer />
         </div>

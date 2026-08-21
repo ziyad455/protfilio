@@ -22,7 +22,7 @@ export const Footer = () => {
             <footer className="text-gray-700 border-t mt-20 md:mt-48 border-dashed border-primary/15 dark:border-primary-dark/15 border-[.75px]">
                 <div className="container flex flex-col items-center py-8 mx-auto px-7 max-w-7xl sm:flex-row">
                     {/* Logo */}
-                    <Link to="/" className="flex items-center">
+                    <Link to="/" aria-label="Ziyad Tber — Home" className="flex items-center">
                         <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-blue-600 dark:from-primary-light dark:to-blue-400 flex items-center justify-center text-white font-brand text-lg font-bold shadow-md">
                             Z
                         </div>

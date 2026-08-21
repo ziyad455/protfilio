@@ -69,7 +69,7 @@ export const HeroCard = ({
 
         document.addEventListener('mousemove', handleMouseMoveGlobal);
         const caseGo = document.querySelector('.case-go');
-        if (caseGo) {
+        if (caseGo && link) {
             caseGo.addEventListener('mouseenter', handleMouseEnter);
             caseGo.addEventListener('mouseleave', handleMouseLeave);
             caseGo.addEventListener('mousemove', handleMouseMoveLocal as EventListener);
@@ -102,14 +102,14 @@ export const HeroCard = ({
         return () => {
             cancelAnimationFrame(rafId);
             document.removeEventListener('mousemove', handleMouseMoveGlobal);
-            if (caseGo) {
+            if (caseGo && link) {
                 caseGo.removeEventListener('mouseenter', handleMouseEnter);
                 caseGo.removeEventListener('mouseleave', handleMouseLeave);
                 caseGo.removeEventListener('mousemove', handleMouseMoveLocal as EventListener);
             }
             document.documentElement.classList.remove('cursor-hidden');
         };
-    }, []);
+    }, [link]);
 
     const handleCaseClick = () => {
         if (link) {
@@ -127,22 +127,27 @@ export const HeroCard = ({
 
                 <div className="relative z-20 w-full">
                     <div
-                        className="relative top-0 left-0 w-full aspect-[6/7] overflow-hidden rounded-xl case-go cursor-pointer"
-                        onClick={handleCaseClick}
+                        className={cn('relative top-0 left-0 w-full aspect-[6/7] overflow-hidden rounded-xl case-go', link && 'cursor-pointer')}
+                        onClick={link ? handleCaseClick : undefined}
                     >
                         <img
                             src={imageUrl}
+                            width="1024"
+                            height="1024"
                             loading="eager"
                             decoding="async"
-                            alt="Hero card visual"
+                            fetchPriority="high"
+                            alt="Portrait of Ziyad Tber"
                             className="absolute top-0 left-0 right-0 z-30 w-full h-full mx-auto object-cover"
                         />
-                        <div ref={indicatorRef} className="cursor-indicator absolute top-0 left-0 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg z-[1000] opacity-0 pointer-events-none transform -translate-x-1/2 -translate-y-1/2 scale-50 transition-all duration-400 ease-out">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary w-6 h-6">
-                                <line x1="7" y1="17" x2="17" y2="7"></line>
-                                <polyline points="7 7 17 7 17 17"></polyline>
-                            </svg>
-                        </div>
+                        {link && (
+                            <div ref={indicatorRef} className="cursor-indicator absolute top-0 left-0 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg z-[1000] opacity-0 pointer-events-none transform -translate-x-1/2 -translate-y-1/2 scale-50 transition-all duration-400 ease-out">
+                                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary w-6 h-6">
+                                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                                    <polyline points="7 7 17 7 17 17"></polyline>
+                                </svg>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

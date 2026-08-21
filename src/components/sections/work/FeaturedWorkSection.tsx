@@ -15,12 +15,14 @@ interface FeaturedWorkSectionProps {
     title?: string;
     description?: string;
     showViewAllButton?: boolean;
+    headingLevel?: 'h1' | 'h2';
 }
 
 export const FeaturedWorkSection = ({
     title = 'Main Projects ↓',
     description = 'My strongest professional and independent engineering work, followed by a broader collection of projects.',
     showViewAllButton = true,
+    headingLevel = 'h2',
 }: FeaturedWorkSectionProps) => {
     const diffShowProject = projectsData.find((project) => project.slug === 'diffshow');
     const otherProjects = projectsData.filter((project) => project.slug !== 'diffshow' && project.slug !== 'project-3');
@@ -32,7 +34,7 @@ export const FeaturedWorkSection = ({
         >
             <div className="space-y-10">
                 <header className="relative z-20 mx-auto mb-14 mt-12 w-full text-center">
-                    <Typography as="h2" variant="h2" className="mb-0 justify-center text-center text-4xl tracking-normal sm:text-5xl">
+                    <Typography as={headingLevel} variant="h2" className="mb-0 justify-center text-center text-4xl tracking-normal sm:text-5xl">
                         <AnimatedText delay={0.2} stagger={0.08} content={title} className="justify-center" />
                     </Typography>
                     <div className="mx-auto mt-4 max-w-3xl text-sm leading-6 text-neutral-700 dark:text-neutral-300 sm:text-base sm:leading-7 lg:mt-6 lg:text-lg lg:leading-8">
