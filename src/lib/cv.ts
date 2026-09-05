@@ -1,3 +1,3 @@
-import cvUrl from '../assets/cv_en (1).pdf.pdf';
+import cvUrl from '../assets/Ziyad_Tber_Software_Engineer_CV.docx?url';
 
 export { cvUrl };
