@@ -47,6 +47,24 @@ export interface SophiaFeaturedProject {
     }>;
 }
 
+export const whatsappAutomationProject: FeaturedProject = {
+    slug: 'whatsapp-automation-platform',
+    title: 'WhatsApp Automation Platform',
+    eyebrow: 'Active development',
+    role: 'Multi-Tenant Business Automation',
+    summary: 'Building a multi-tenant WhatsApp automation platform with a React/TypeScript dashboard and Node.js/Mastra backend for configurable AI-driven multilingual customer service.',
+    outcomeSummary: 'Core architecture is implemented; messaging integrations and additional features are in active development.',
+    coverImage: '/assets/projects/whatsapp-automation-platform-cover.webp',
+    coverAlt: 'Multi-tenant business automation diagram showing three businesses connected to a shared AI agent, customer conversations, and a dashboard',
+    areas: [
+        'Multi-Tenant Architecture',
+        'Tenant Isolation & Authentication',
+        'Configurable Business Data',
+        'Multilingual AI Agent',
+    ],
+    technologies: ['React', 'TypeScript', 'Node.js', 'Mastra', 'PostgreSQL', 'Prisma'],
+};
+
 export const featuredProjects: FeaturedProject[] = [
     {
         slug: 'nexus-inclusion',
@@ -66,6 +84,7 @@ export const featuredProjects: FeaturedProject[] = [
         technologies: ['Astro', 'TypeScript', 'Strapi', 'SCSS'],
         externalUrl: 'https://www.nexusinclusion.com/',
     },
+    whatsappAutomationProject,
 ];
 
 export const nexusProject = featuredProjects[0];

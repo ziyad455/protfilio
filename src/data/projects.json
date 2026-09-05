@@ -1,5 +1,24 @@
 [
     {
+        "title": "WhatsApp Automation Platform",
+        "slug": "whatsapp-automation-platform",
+        "tagline": "Multi-Tenant Business Automation",
+        "description": "Building a multi-tenant WhatsApp automation platform with a React/TypeScript dashboard and Node.js/Mastra backend for configurable AI-driven multilingual customer service.\n\nThe current architecture includes authentication, tenant-scoped data isolation in PostgreSQL and Prisma, configurable business data and rules, and a shared Mastra customer-service agent that receives tenant-specific runtime context. Messaging integrations and additional features are in active development.",
+        "coverImage": "/assets/projects/whatsapp-automation-platform-cover.webp",
+        "gallery": [],
+        "techStack": [
+            "React",
+            "TypeScript",
+            "Node.js",
+            "Mastra",
+            "PostgreSQL",
+            "Prisma"
+        ],
+        "githubUrl": null,
+        "liveUrl": null,
+        "isFeatured": true
+    },
+    {
         "title": "DiffShow",
         "slug": "diffshow",
         "tagline": "Open-source CLI for polished, portable Git change reports.",
