@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
 import { cn } from '../../lib/utils';
-import { Sun, Moon, Menu, X, Download } from 'lucide-react';
+import { Sun, Moon, Menu, X, ExternalLink } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { cvUrl } from '../../lib/cv';
 
@@ -140,11 +140,12 @@ export const Navbar = () => {
                                     as="a"
                                     href={cvUrl}
                                     target="_blank"
+                                    rel="noopener noreferrer"
                                     variant="primary"
                                     className="w-full justify-center"
                                     onClick={closeMobileMenu}
                                 >
-                                    Resume <Download size={16} />
+                                    Resume <ExternalLink size={16} />
                                 </Button>
                             </div>
                         </div>
@@ -156,11 +157,12 @@ export const Navbar = () => {
                                 as="a"
                                 href={cvUrl}
                                 target="_blank"
+                                rel="noopener noreferrer"
                                 variant="primary"
                                 size="sm"
                                 className="mx-1"
                             >
-                                Resume <Download size={16} />
+                                Resume <ExternalLink size={16} />
                             </Button>
 
                             <span className="hidden sm:inline-block bg-[rgba(183,202,255,0.5)] mt-[20px] -translate-y-1/2 w-px h-[20px]" />
