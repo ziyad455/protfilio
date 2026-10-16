@@ -1,10 +1,10 @@
 {
     "greeting": "Hey, I'm ",
     "name": "Ziyad",
-    "description": "A Software Engineer from Marrakech, Morocco. I build thoughtful digital products across frontend engineering, accessibility, performance, technical SEO, and CMS-driven platforms.",
+    "description": "A Full-Stack Automation Developer from Marrakech, Morocco. I build thoughtful digital products across frontend engineering, accessibility, performance, technical SEO, and CMS-driven platforms.",
     "resumeLink": "/resume.pdf",
     "roles": [
-        "Software Engineer"
+        "Full-Stack Automation Developer"
     ],
     "profileImage": "/assets/hero/profile.jpg"
 }
