@@ -2,8 +2,8 @@
     {
         "title": "WhatsApp Automation Platform",
         "slug": "whatsapp-automation-platform",
-        "tagline": "Multi-Tenant Business Automation",
-        "description": "Building a multi-tenant WhatsApp automation platform with a React/TypeScript dashboard and Node.js/Mastra backend for configurable AI-driven multilingual customer service.\n\nThe current architecture includes authentication, tenant-scoped data isolation in PostgreSQL and Prisma, configurable business data and rules, and a shared Mastra customer-service agent that receives tenant-specific runtime context. Messaging integrations and additional features are in active development.",
+        "tagline": "Business-aware WhatsApp customer service and follow-up automation.",
+        "description": "WhatsApp Business Automation helps businesses answer customer questions using their current services, prices, availability, opening hours, and rules. It also keeps conversations, leads, human handoffs, follow-ups, and customer history organized in one dashboard.\n\nThe goal is to automate repetitive WhatsApp communication while keeping employees in control when a customer needs human attention. Full implementation details and technical documentation are available in the GitHub repository.",
         "coverImage": "/assets/projects/whatsapp-automation-platform-cover.webp",
         "gallery": [],
         "techStack": [
@@ -14,7 +14,7 @@
             "PostgreSQL",
             "Prisma"
         ],
-        "githubUrl": null,
+        "githubUrl": "https://github.com/ziyad455/whatsapp-automation",
         "liveUrl": null,
         "isFeatured": true
     },
